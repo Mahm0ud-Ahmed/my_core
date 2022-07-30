@@ -49,6 +49,46 @@ class S {
   static S? maybeOf(BuildContext context) {
     return Localizations.of<S>(context, S);
   }
+
+  /// `Un-Expected Error`
+  String get handle_error_status_connect_time_out {
+    return Intl.message(
+      'Un-Expected Error',
+      name: 'handle_error_status_connect_time_out',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The server connection was unexpectedly lost`
+  String get handle_error_message_connect_time_out {
+    return Intl.message(
+      'The server connection was unexpectedly lost',
+      name: 'handle_error_message_connect_time_out',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cancel Request`
+  String get handle_error_status_cancel {
+    return Intl.message(
+      'Cancel Request',
+      name: 'handle_error_status_cancel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Canceled Request`
+  String get handle_error_message_cancel {
+    return Intl.message(
+      'Canceled Request',
+      name: 'handle_error_message_cancel',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
@@ -57,6 +97,7 @@ class AppLocalizationDelegate extends LocalizationsDelegate<S> {
   List<Locale> get supportedLocales {
     return const <Locale>[
       Locale.fromSubtags(languageCode: 'en'),
+      Locale.fromSubtags(languageCode: 'ar'),
     ];
   }
 
