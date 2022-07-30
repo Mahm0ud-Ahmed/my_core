@@ -37,6 +37,9 @@ dependencies:
   logger: ^1.1.0
   # Add multi-icons
   font_awesome_flutter: ^10.1.0
+  dio: ^4.0.6
+  json_serializable: ^6.3.1
+  dartz: ^0.10.1
   
 
 dev_dependencies:
