@@ -1,9 +1,11 @@
+import 'dart:io';
+
 import 'package:dio/dio.dart';
 
 import '../config/l10n/generated/l10n.dart';
 import 'error_model.dart';
 
-class ErrorHandling{
+class ErrorHandler{
 
   static ErrorModel handleError(DioError error){
     late ErrorModel errorModel;
@@ -24,7 +26,14 @@ class ErrorHandling{
         );
         break;
       case DioErrorType.response:
-        errorModel = ErrorModel.fromJson(error.response?.data);
+        if(error.response?.statusCode == HttpStatus.badRequest){
+          errorModel = ErrorModel.fromJson(error.response?.data);
+        }else if(error.response?.statusCode == HttpStatus.notFound){
+          errorModel = ErrorModel(
+            status: error.response?.statusMessage,
+            message: error.message,
+          );
+        }
         break;
     }
     return errorModel;

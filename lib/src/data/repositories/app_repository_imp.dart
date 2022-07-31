@@ -3,7 +3,7 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:retrofit/dio.dart';
-import 'package:world_news/src/core/error/error_handling.dart';
+import 'package:world_news/src/core/error/error_handler.dart';
 import 'package:world_news/src/core/error/error_model.dart';
 import 'package:dartz/dartz.dart';
 import 'package:world_news/src/core/utils/query_params.dart';
@@ -28,11 +28,11 @@ class AppRepositoryImp extends IAppRepository{
       if(response.response.statusCode == HttpStatus.ok){
         return Right(response.data.articles);
       }else{
-        return Left(ErrorHandling.handleError(response.data));
+        return Left(ErrorHandler.handleError(response.data));
       }
 
     } on DioError catch (error) {
-      return Left(ErrorHandling.handleError(error));
+      return Left(ErrorHandler.handleError(error));
     }
   }
 }

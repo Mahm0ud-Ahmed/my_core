@@ -1,9 +1,5 @@
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:world_news/src/core/utils/query_params.dart';
-import 'package:world_news/src/data/data_sources/remote/api_service.dart';
-import 'package:world_news/src/data/repositories/app_repository_imp.dart';
-import 'package:world_news/src/domain/repositories/i_app_repository.dart';
 import 'package:world_news/src/domain/use_cases/get_data_use_case.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
@@ -57,7 +53,8 @@ class _MyHomePageState extends State<MyHomePage> {
     usecase = GetDataUseCase(injector());
     final responce = await usecase!(params: const QueryParams(endpoint: 'everything', queryWord: 'bitcoin'));
     responce.fold((l){
-      print('====>>>> ${l.code}');
+      print('====>>>> ${l.message}');
+      print('====>>>> ${l.status}');
     }, (r) {
       print(r.length);
     });
