@@ -1,9 +1,11 @@
+
 import 'package:dartz/dartz.dart';
+import 'package:world_news/src/core/error/error_model.dart';
+import 'package:world_news/src/core/utils/query_params.dart';
+import 'package:world_news/src/domain/entities/article.dart';
 
-import '../../core/error/error_model.dart';
+abstract class IAppRepository{
 
-abstract class IAppRepository<RETURN, PARAMETERS>{
-
-  Future<Either<ErrorModel, RETURN>> getRepoData({PARAMETERS? params});
+  Future<Either<ErrorModel, List<Article>>> getEveryThingQuery(QueryParams params);
   
 }
