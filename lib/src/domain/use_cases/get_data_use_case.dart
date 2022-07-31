@@ -12,7 +12,7 @@ class GetDataUseCase extends UseCase<List<Article>>{
   GetDataUseCase(this._appRepository);
   
   @override
-  Future<Either<ErrorModel, List<Article>>> call({QueryParams? params}) async{
-    return await _appRepository.getEveryThingQuery(params!);
+  Future<Either<ErrorModel, List<Article>>> call({required QueryParams params}) async{
+    return await _appRepository.getEveryThingQuery(params);
   }
 }

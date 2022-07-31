@@ -4,6 +4,6 @@ import 'package:world_news/src/core/utils/query_params.dart';
 
 abstract class UseCase<RETURN>{
 
-  Future<Either<ErrorModel, RETURN>> call({QueryParams? params});
+  Future<Either<ErrorModel, RETURN>> call({required QueryParams params});
   
 }
