@@ -5,7 +5,7 @@ import 'package:world_news/src/core/utils/query_params.dart';
 import 'package:world_news/src/domain/entities/article.dart';
 import 'package:world_news/src/domain/repositories/i_app_repository.dart';
 
-class GetDataUseCase extends UseCase<List<Article>, QueryParams>{
+class GetDataUseCase extends UseCase<List<Article>>{
 
   final IAppRepository _appRepository;
 
