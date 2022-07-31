@@ -24,11 +24,7 @@ class ErrorHandling{
         );
         break;
       case DioErrorType.response:
-        errorModel = ErrorModel(
-          status: error.response.toString(),
-          code: error.response?.statusCode.toString(),
-          message: error.response?.statusMessage,
-        );
+        errorModel = ErrorModel.fromJson(error.response?.data);
         break;
     }
     return errorModel;
