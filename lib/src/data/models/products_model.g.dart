@@ -12,7 +12,7 @@ ProductsModel _$ProductsModelFromJson(Map<String, dynamic> json) =>
           ?.map((e) => SingleProductModel.fromJson(e as Map<String, dynamic>))
           .toList(),
       total: json['total'] as int?,
-      skip: json['skip'] as int?,
+      skip: json['skip'] as String?,
       limit: json['limit'] as int?,
     );
 
