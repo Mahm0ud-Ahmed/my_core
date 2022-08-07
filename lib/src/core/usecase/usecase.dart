@@ -1,9 +1,8 @@
-import 'package:dartz/dartz.dart';
-import 'package:world_news/src/core/error/error_model.dart';
+import 'package:world_news/src/core/utils/data_state.dart';
 import 'package:world_news/src/core/utils/query_params.dart';
 
-abstract class UseCase<RETURN>{
+abstract class UseCase{
 
-  Future<Either<ErrorModel, RETURN>> call({required QueryParams params});
+  Future<DataState> call({required QueryParams params});
   
 }
