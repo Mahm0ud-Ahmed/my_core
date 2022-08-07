@@ -17,8 +17,10 @@ class ApiDataCollection extends ApiDataEvent {
 
 class ApiDataSingle extends ApiDataEvent {
 
-  const ApiDataSingle(
-    QueryParams queryParams
-  ) : super(queryParams);
+  const ApiDataSingle(QueryParams queryParams) : super(queryParams);
+}
 
+class ApiDataByPath extends ApiDataEvent {
+
+  const ApiDataByPath(QueryParams queryParams) : super(queryParams);
 }

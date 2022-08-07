@@ -4,10 +4,10 @@ import 'package:world_news/injector.dart';
 import 'package:world_news/src/core/error/error_model.dart';
 import 'package:world_news/src/core/utils/data_state.dart';
 import 'package:world_news/src/core/utils/query_params.dart';
+import 'package:world_news/src/domain/use_cases/get_collection_data_use_case.dart';
 import 'package:world_news/src/domain/use_cases/get_data_by_path_use_case.dart';
 import 'package:world_news/src/domain/use_cases/get_single_data_use_case.dart';
 
-import '../../../domain/use_cases/get_collection_data_use_case.dart';
 
 part 'api_data_event.dart';
 part 'api_data_state.dart';
@@ -22,16 +22,29 @@ class ApiDataBloc<MODEL> extends Bloc<ApiDataEvent, ApiDataState> {
 
     on<ApiDataSingle>((event, emit) => _getDataSingle(event, emit));
     on<ApiDataCollection>((event, emit) => _getDataCollection(event, emit));
+    on<ApiDataByPath>((event, emit) => _getDataByPath(event, emit));
   }
 
   Future<void> _getDataSingle(ApiDataSingle event, Emitter<ApiDataState> emit) async{
+    emit(const ApiDataLoading());
+    
+    DataState state = await _getSingleDataUseCase.call(params: event._queryParams);
+
+    if(state is DataSuccess){
+      emit(ApiDataLoaded<MODEL>(state.data));
+    }else{
+      emit(ApiDataError(state.error!));
+    }
+  }
+
+  Future<void> _getDataByPath(ApiDataByPath event, Emitter<ApiDataState> emit) async{
     emit(const ApiDataLoading());
     
     DataState state;
     if(event._queryParams.pathId != null && event._queryParams.pathId!.isNotEmpty){
       state = await _getDataByPathUseCase.call(params: event._queryParams);
     }else{
-      state = await _getSingleDataUseCase.call(params: event._queryParams);
+      return;
     }
 
     if(state is DataSuccess){

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:world_news/src/core/utils/query_params.dart';
-import 'package:world_news/src/data/models/fake_model.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:world_news/src/data/models/products_model.dart';
-import 'package:world_news/src/presentation/blocs/bloc/api_data_bloc.dart';
+import 'package:world_news/src/data/models/single_product_model.dart';
+import 'package:world_news/src/presentation/blocs/api_data_bloc.dart';
 
 import 'injector.dart';
 import 'main.reflectable.dart';
@@ -46,7 +46,7 @@ class MyHomePage extends StatefulWidget {
   MyHomePage({Key? key, required this.title,}) : super(key: key);
   final String title;
 
-  ApiDataBloc<ProductsModel> dataBloc = ApiDataBloc();
+  ApiDataBloc<Map> dataBloc = ApiDataBloc();
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -60,7 +60,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void _incrementCounter() async {
-    widget.dataBloc.add(const ApiDataSingle(QueryParams(endpoint: 'products',)));
+    widget.dataBloc.add(const ApiDataSingle(QueryParams(endpoint: 'products', pathId: '1')));
   }
 
   @override
@@ -77,13 +77,13 @@ class _MyHomePageState extends State<MyHomePage> {
               bloc: widget.dataBloc,
               builder: (context, state) {
                 // print(state);
-                if(state is ApiDataLoaded<ProductsModel>) {
+                if(state is ApiDataLoaded<Map>) {
                   return Text(
-                  '${state.data?.total}',
+                  '${state.data}',
                 );
                 }else if(state is ApiDataError){
                   return Text(
-                    '${state.error?.status}',
+                    '${state.error?.message}',
                   );
                 }
                 return CircularProgressIndicator();
