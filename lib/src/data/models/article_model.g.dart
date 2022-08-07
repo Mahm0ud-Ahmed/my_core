@@ -8,13 +8,13 @@ part of 'article_model.dart';
 
 ArticleModel _$ArticleModelFromJson(Map<String, dynamic> json) => ArticleModel(
       json['author'] as String?,
-      json['content'] as String,
-      json['description'] as String,
-      json['publishedAt'] as String,
-      json['source'] as Map<String, dynamic>,
-      json['title'] as String,
-      json['url'] as String,
-      json['urlToImage'] as String,
+      json['content'] as String?,
+      json['description'] as String?,
+      json['publishedAt'] as String?,
+      json['source'] as Map<String, dynamic>?,
+      json['title'] as String?,
+      json['url'] as String?,
+      json['urlToImage'] as String?,
     );
 
 Map<String, dynamic> _$ArticleModelToJson(ArticleModel instance) =>
