@@ -6,7 +6,7 @@ class AppRoute {
   Route generateRoute(RouteSettings route) {
     switch (route.name) {
       default:
-        return MaterialPageRoute(builder: (_) => const MyHomePage(title: 'Main',));
+        return MaterialPageRoute(builder: (_) => MyHomePage(title: 'Main',));
     }
   }
 }
