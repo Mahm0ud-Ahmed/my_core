@@ -19,7 +19,6 @@ class ApiDataBloc<MODEL> extends Bloc<ApiDataEvent, ApiDataState> {
   final GetDataByPathUseCase<MODEL> _getDataByPathUseCase = GetDataByPathUseCase(injector());
 
   ApiDataBloc() : super(const ApiDataIdle()) {
-
     on<ApiDataSingle>((event, emit) => _getDataSingle(event, emit));
     on<ApiDataCollection>((event, emit) => _getDataCollection(event, emit));
     on<ApiDataByPath>((event, emit) => _getDataByPath(event, emit));

@@ -9,7 +9,7 @@ part 'products_model.g.dart';
 class ProductsModel extends Equatable{
   final List<SingleProductModel>? products;
   final int? total;
-  final String? skip;
+  final dynamic? skip;
   final int? limit;
 
   const ProductsModel({this.products, this.total, this.skip, this.limit});
