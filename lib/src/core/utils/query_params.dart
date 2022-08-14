@@ -1,4 +1,3 @@
-import 'package:world_news/src/core/utils/constant_value.dart';
 
 class QueryParams{
   // final String? apiKey;
@@ -13,10 +12,10 @@ class QueryParams{
   // final String? to;
   // final String? country;
   // final String? category;
-  // final int? pageSize;
-  // final int? page;
+  int? pageSize;
+  int? page;
 
-  const QueryParams({
+  QueryParams({
     required this.endpoint,
     // this.apiKey = ConstantValue.kApiKey,
     this.pathId,
@@ -30,7 +29,7 @@ class QueryParams{
     // this.country,
     // this.category,
     // this.pageSize,
-    // this.page,
+    this.page,
   }
 );
 

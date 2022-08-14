@@ -1,26 +1,32 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 part of 'api_data_bloc.dart';
 
 abstract class ApiDataEvent extends Equatable {
 
-  final QueryParams _queryParams;
+  QueryParams? queryParams;
 
-  const ApiDataEvent(this._queryParams);
+  ApiDataEvent(this.queryParams);
 
   @override
-  List<Object> get props => [_queryParams];
+  List<Object?> get props => [queryParams];
 }
 
 class ApiDataCollection extends ApiDataEvent {
 
-  const ApiDataCollection(QueryParams queryParams) : super(queryParams);
+  ApiDataCollection({QueryParams? queryParams}) : super(queryParams);
 }
 
 class ApiDataSingle extends ApiDataEvent {
 
-  const ApiDataSingle(QueryParams queryParams) : super(queryParams);
+  ApiDataSingle({QueryParams? queryParams}) : super(queryParams);
+}
+
+class ApiDataPagination extends ApiDataEvent {
+
+  ApiDataPagination({QueryParams? queryParams}) : super(queryParams);
 }
 
 class ApiDataByPath extends ApiDataEvent {
 
-  const ApiDataByPath(QueryParams queryParams) : super(queryParams);
+  ApiDataByPath({QueryParams? queryParams}) : super(queryParams);
 }

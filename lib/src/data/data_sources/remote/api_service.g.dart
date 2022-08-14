@@ -44,8 +44,8 @@ class _ApiService implements ApiService {
       r'to': to,
       r'country': country,
       r'category': category,
-      r'pageSize': pageSize,
-      r'page': page
+      r'limit': pageSize,
+      r'skip': page
     };
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};

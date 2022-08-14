@@ -14,6 +14,8 @@ class AppRepositoryImp extends IAppRepository{
       // apiKey: params.apiKey,
       querySearch: params.queryWord,
       endpoint: params.endpoint,
+      page: params.page.toString(),
+      pageSize: params.pageSize.toString(),
     );
   }
   

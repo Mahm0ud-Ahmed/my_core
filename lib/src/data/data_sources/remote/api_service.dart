@@ -23,8 +23,8 @@ abstract class ApiService{
     @Query("to") String? to,
     @Query("country") String? country,
     @Query("category") String? category,
-    @Query("pageSize") String? pageSize,
-    @Query("page") String? page,
+    @Query("limit") String? pageSize,
+    @Query("skip") String? page,
   });
 
   @GET('{endpoint}/{id}')
