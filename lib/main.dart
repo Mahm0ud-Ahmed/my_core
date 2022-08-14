@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:world_news/src/core/utils/query_params.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:world_news/src/data/models/products_model.dart';
+import 'package:world_news/src/data/models/product_pagination_model.dart';
 import 'package:world_news/src/presentation/blocs/api_data_bloc.dart';
 
 import 'injector.dart';
 import 'main.reflectable.dart';
 import 'src/core/config/l10n/generated/l10n.dart';
-import 'src/data/models/single_product_model.dart';
+import 'src/data/models/product_model.dart';
 
 void main() {
   initializeReflectable();
@@ -46,7 +47,7 @@ class MyHomePage extends StatefulWidget {
   MyHomePage({Key? key, required this.title,}) : super(key: key);
   final String title;
 
-  ApiDataBloc<SingleProductModel> dataBloc = ApiDataBloc();
+  ApiDataBloc<ProductModel> dataBloc = ApiDataBloc();
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -60,36 +61,35 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void _incrementCounter() async {
-    widget.dataBloc.add(const ApiDataByPath(QueryParams(endpoint: 'products', pathId: '1')));
+    widget.dataBloc.add(ApiDataPagination());
   }
 
   @override
   Widget build(BuildContext context) {
+    print('================');
       return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            BlocBuilder(
-              bloc: widget.dataBloc,
-              builder: (context, state) {
-                // print(state);
-                if(state is ApiDataLoaded<SingleProductModel>) {
-                  return Text(
-                  '${state.data}',
-                );
-                }else if(state is ApiDataError){
-                  return Text(
-                    '${state.error?.message}',
-                  );
-                }
-                return CircularProgressIndicator();
-              },
-            ),
-          ],
+        child: PagedListView(
+          pagingController: widget.dataBloc.controller, 
+          builderDelegate: PagedChildBuilderDelegate<ProductModel>(
+            itemBuilder: (BuildContext context, ProductModel item, int index) {
+              return SizedBox(
+                height: 40,
+                width: double.infinity,
+                child: Text(item.id.toString())
+              );
+            },
+            firstPageErrorIndicatorBuilder: (context) {
+              return Text(widget.dataBloc.controller.error.message);
+            },
+            newPageErrorIndicatorBuilder: (context) {
+              return Text('**************************');
+            },
+            
+          ),
         ),
       ),
       floatingActionButton: FloatingActionButton(
