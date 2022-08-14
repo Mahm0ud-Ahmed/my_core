@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:reflectable/reflectable.dart';
-import 'package:world_news/src/core/utils/reflector.dart';
+import 'package:my_core/src/core/utils/reflector.dart';
 
 @ModelReflector()
 class ProductPaginationModel<MODEL> extends Equatable{

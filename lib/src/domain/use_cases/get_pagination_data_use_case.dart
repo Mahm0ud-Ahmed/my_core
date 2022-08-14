@@ -2,11 +2,11 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
-import 'package:world_news/src/core/error/error_handler.dart';
-import 'package:world_news/src/core/usecase/usecase.dart';
-import 'package:world_news/src/core/utils/data_state.dart';
-import 'package:world_news/src/core/utils/query_params.dart';
-import 'package:world_news/src/domain/repositories/i_app_repository.dart';
+import 'package:my_core/src/core/error/error_handler.dart';
+import 'package:my_core/src/core/usecase/usecase.dart';
+import 'package:my_core/src/core/utils/data_state.dart';
+import 'package:my_core/src/core/utils/query_params.dart';
+import 'package:my_core/src/domain/repositories/i_app_repository.dart';
 
 import '../../data/models/product_pagination_model.dart';
 

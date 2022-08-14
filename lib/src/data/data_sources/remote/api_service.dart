@@ -1,7 +1,7 @@
 
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
-import 'package:world_news/src/core/utils/constant_value.dart';
+import 'package:my_core/src/core/utils/constant_value.dart';
 
 part 'api_service.g.dart';
 

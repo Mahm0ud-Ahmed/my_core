@@ -2,8 +2,8 @@ import 'dart:convert';
 
 import 'package:reflectable/reflectable.dart';
 import 'package:retrofit/retrofit.dart';
-import 'package:world_news/src/core/utils/data_state.dart';
-import 'package:world_news/src/core/utils/reflector.dart';
+import 'package:my_core/src/core/utils/data_state.dart';
+import 'package:my_core/src/core/utils/reflector.dart';
 
 class DataReflection<T>{
 

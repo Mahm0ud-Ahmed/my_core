@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart' show JsonSerializable;
-import 'package:world_news/src/core/utils/reflector.dart';
+import 'package:my_core/src/core/utils/reflector.dart';
 
 import 'article_model.dart';
 

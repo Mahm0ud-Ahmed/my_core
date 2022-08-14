@@ -1,7 +1,7 @@
 import 'package:retrofit/dio.dart';
-import 'package:world_news/src/core/utils/query_params.dart';
-import 'package:world_news/src/data/data_sources/remote/api_service.dart';
-import 'package:world_news/src/domain/repositories/i_app_repository.dart';
+import 'package:my_core/src/core/utils/query_params.dart';
+import 'package:my_core/src/data/data_sources/remote/api_service.dart';
+import 'package:my_core/src/domain/repositories/i_app_repository.dart';
 
 class AppRepositoryImp extends IAppRepository{
   final ApiService _apiService;

@@ -1,6 +1,6 @@
 
 import 'package:json_annotation/json_annotation.dart';
-import 'package:world_news/src/core/utils/reflector.dart';
+import 'package:my_core/src/core/utils/reflector.dart';
 part 'fake_model.g.dart';
 
 @JsonSerializable()

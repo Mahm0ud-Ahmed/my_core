@@ -5,9 +5,9 @@
 import 'dart:core';
 import 'package:json_annotation/src/json_key.dart' as prefix4;
 import 'package:json_annotation/src/json_serializable.dart' as prefix3;
-import 'package:world_news/src/core/utils/reflector.dart' as prefix0;
-import 'package:world_news/src/data/models/product_model.dart' as prefix2;
-import 'package:world_news/src/data/models/product_pagination_model.dart'
+import 'package:my_core/src/core/utils/reflector.dart' as prefix0;
+import 'package:my_core/src/data/models/product_model.dart' as prefix2;
+import 'package:my_core/src/data/models/product_pagination_model.dart'
     as prefix1;
 
 // ignore_for_file: camel_case_types

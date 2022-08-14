@@ -1,5 +1,5 @@
 import 'package:reflectable/reflectable.dart';
-import 'package:world_news/src/core/utils/reflector.dart';
+import 'package:my_core/src/core/utils/reflector.dart';
 
 class InvokeReflection<MODEL>{
 

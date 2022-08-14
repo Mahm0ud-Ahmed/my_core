@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
-import 'package:world_news/src/core/utils/constant_value.dart';
+import 'package:my_core/src/core/utils/constant_value.dart';
 
 class DioClient{
   static late final Dio _dio;

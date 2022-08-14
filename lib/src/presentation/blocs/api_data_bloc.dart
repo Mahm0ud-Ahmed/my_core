@@ -1,14 +1,14 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
-import 'package:world_news/injector.dart';
-import 'package:world_news/src/core/error/error_model.dart';
-import 'package:world_news/src/core/utils/data_state.dart';
-import 'package:world_news/src/core/utils/invoke_reflection.dart';
-import 'package:world_news/src/core/utils/pagination_criteria.dart';
-import 'package:world_news/src/core/utils/query_params.dart';
-import 'package:world_news/src/data/models/product_pagination_model.dart';
-import 'package:world_news/src/domain/use_cases/get_pagination_data_use_case.dart';
+import 'package:my_core/injector.dart';
+import 'package:my_core/src/core/error/error_model.dart';
+import 'package:my_core/src/core/utils/data_state.dart';
+import 'package:my_core/src/core/utils/invoke_reflection.dart';
+import 'package:my_core/src/core/utils/pagination_criteria.dart';
+import 'package:my_core/src/core/utils/query_params.dart';
+import 'package:my_core/src/data/models/product_pagination_model.dart';
+import 'package:my_core/src/domain/use_cases/get_pagination_data_use_case.dart';
 
 import '../../domain/use_cases/get_data_by_path_use_case.dart';
 

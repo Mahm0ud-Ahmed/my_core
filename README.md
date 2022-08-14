@@ -1,4 +1,4 @@
-# world_news
+# my_core
 
 A new Flutter project.
 

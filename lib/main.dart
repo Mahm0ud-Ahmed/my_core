@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
-import 'package:world_news/src/core/utils/query_params.dart';
+import 'package:my_core/src/core/utils/query_params.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:world_news/src/data/models/product_pagination_model.dart';
-import 'package:world_news/src/presentation/blocs/api_data_bloc.dart';
+import 'package:my_core/src/data/models/product_pagination_model.dart';
+import 'package:my_core/src/presentation/blocs/api_data_bloc.dart';
 
 import 'injector.dart';
 import 'main.reflectable.dart';

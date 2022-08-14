@@ -1,5 +1,5 @@
-import 'package:world_news/src/core/utils/data_state.dart';
-import 'package:world_news/src/core/utils/query_params.dart';
+import 'package:my_core/src/core/utils/data_state.dart';
+import 'package:my_core/src/core/utils/query_params.dart';
 
 abstract class UseCase{
 
