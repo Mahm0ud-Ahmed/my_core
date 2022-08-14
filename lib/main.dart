@@ -57,6 +57,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   void initState() {
+    // widget.dataBloc.add(ApiDataPagination(queryParams: QueryParams(endpoint: 'products', queryWord: 'L')));
+    widget.dataBloc.query = QueryParams(endpoint: 'products/search', queryWord: 'La');
     super.initState();
   }
 
@@ -66,7 +68,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    print('================');
+    
+    // print('================');
       return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),

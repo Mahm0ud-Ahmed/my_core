@@ -26,17 +26,18 @@ class ApiDataBloc<MODEL> extends Bloc<ApiDataEvent, ApiDataState> {
   late PagingController<int, MODEL> controller;
   final InvokeReflection<MODEL> _invokeReflection = InvokeReflection();
 
-  late QueryParams query;
+  QueryParams? query;
 
   ApiDataBloc() : super(const ApiDataIdle()) {
     // on<ApiDataSingle>((event, emit) => _getDataSingle(event, emit));
     // on<ApiDataCollection>((event, emit) => _getDataCollection(event, emit));
     on<ApiDataByPath>((event, emit) => _getDataByPath(event, emit));
     on<ApiDataPagination>((event, emit) => _getDataPagination(event, emit));
-
+    if(query == null){
+      String route = _invokeReflection.getRoute();
+      query = QueryParams(endpoint: route);
+    }
     _criteria = PaginationCriteria();
-    String route = _invokeReflection.getRoute();
-    query = QueryParams(endpoint: route);
     initializeController();
   }
 
@@ -45,13 +46,14 @@ class ApiDataBloc<MODEL> extends Bloc<ApiDataEvent, ApiDataState> {
       firstPageKey: _criteria.getPageNumber,
       invisibleItemsThreshold: _criteria.getPageSize,
     );
-    controller.removePageRequestListener(_fetchPage);
-    controller.addPageRequestListener(_fetchPage);
+    controller.removePageRequestListener(_fetchData);
+    controller.addPageRequestListener(_fetchData);
   }
 
-  void _fetchPage(int pageKey) {
+  void _fetchData(int pageKey) {
     _criteria.setPageNumber = pageKey;
     if(!isClosed) {
+      print('===>> $query');
       add(ApiDataPagination(queryParams: query));
     }
   }
@@ -60,7 +62,7 @@ class ApiDataBloc<MODEL> extends Bloc<ApiDataEvent, ApiDataState> {
     emit(const ApiDataLoading());
     passPaginationForEvent(event);
 
-    DataState state = await _getPaginationDataUseCase.call(params: event.queryParams!);
+    DataState state = await _getPaginationDataUseCase.call(params: event.queryParams ?? query!);
     if(state is DataSuccess){
       ProductPaginationModel<MODEL> pagination = state.data as ProductPaginationModel<MODEL>;
       emit(ApiDataLoaded<ProductPaginationModel<MODEL>>(pagination));
