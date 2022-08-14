@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:reflectable/reflectable.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:my_core/src/core/utils/data_state.dart';
