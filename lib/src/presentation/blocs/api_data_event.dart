@@ -11,7 +11,7 @@ abstract class ApiDataEvent extends Equatable {
   List<Object?> get props => [queryParams];
 }
 
-class ApiDataCollection extends ApiDataEvent {
+/* class ApiDataCollection extends ApiDataEvent {
 
   ApiDataCollection({QueryParams? queryParams}) : super(queryParams);
 }
@@ -19,7 +19,7 @@ class ApiDataCollection extends ApiDataEvent {
 class ApiDataSingle extends ApiDataEvent {
 
   ApiDataSingle({QueryParams? queryParams}) : super(queryParams);
-}
+} */
 
 class ApiDataPagination extends ApiDataEvent {
 
@@ -27,6 +27,7 @@ class ApiDataPagination extends ApiDataEvent {
 }
 
 class ApiDataByPath extends ApiDataEvent {
+  String path;
 
-  ApiDataByPath({QueryParams? queryParams}) : super(queryParams);
+  ApiDataByPath(this.path, {QueryParams? queryParams}) : super(queryParams);
 }

@@ -10,6 +10,8 @@ import 'package:world_news/src/core/utils/query_params.dart';
 import 'package:world_news/src/data/models/product_pagination_model.dart';
 import 'package:world_news/src/domain/use_cases/get_pagination_data_use_case.dart';
 
+import '../../domain/use_cases/get_data_by_path_use_case.dart';
+
 part 'api_data_event.dart';
 part 'api_data_state.dart';
 
@@ -18,7 +20,7 @@ class ApiDataBloc<MODEL> extends Bloc<ApiDataEvent, ApiDataState> {
   // final GetSingleDataUseCase<ProductPaginationModel<MODEL>> _getSingleDataUseCase = GetSingleDataUseCase(injector());
   final GetPaginationDataUseCase<MODEL> _getPaginationDataUseCase = GetPaginationDataUseCase(injector());
   // final GetCollectionDataUseCase<MODEL> _getCollectionDataUseCase = GetCollectionDataUseCase(injector());
-  // final GetDataByPathUseCase<MODEL> _getDataByPathUseCase = GetDataByPathUseCase(injector());
+  final GetDataByPathUseCase<MODEL> _getDataByPathUseCase = GetDataByPathUseCase(injector());
 
   late PaginationCriteria _criteria;
   late PagingController<int, MODEL> controller;
@@ -29,7 +31,7 @@ class ApiDataBloc<MODEL> extends Bloc<ApiDataEvent, ApiDataState> {
   ApiDataBloc() : super(const ApiDataIdle()) {
     // on<ApiDataSingle>((event, emit) => _getDataSingle(event, emit));
     // on<ApiDataCollection>((event, emit) => _getDataCollection(event, emit));
-    // on<ApiDataByPath>((event, emit) => _getDataByPath(event, emit));
+    on<ApiDataByPath>((event, emit) => _getDataByPath(event, emit));
     on<ApiDataPagination>((event, emit) => _getDataPagination(event, emit));
 
     _criteria = PaginationCriteria();
@@ -84,25 +86,15 @@ class ApiDataBloc<MODEL> extends Bloc<ApiDataEvent, ApiDataState> {
     }
   }
 
-  /* Future<void> _getDataSingle(ApiDataSingle event, Emitter<ApiDataState> emit) async{
-    emit(const ApiDataLoading());
-    
-    DataState state = await _getSingleDataUseCase.call(params: event.queryParams!);
-
-    if(state is DataSuccess){
-      emit(ApiDataLoaded<MODEL>(state.data));
-    }else{
-      emit(ApiDataError(state.error!));
-    }
-  }
-
   Future<void> _getDataByPath(ApiDataByPath event, Emitter<ApiDataState> emit) async{
     emit(const ApiDataLoading());
+    event.queryParams?.pathId = event.path;
     
     DataState state;
     if(event.queryParams?.pathId != null && event.queryParams!.pathId!.isNotEmpty){
       state = await _getDataByPathUseCase.call(params: event.queryParams!);
     }else{
+      emit(const ApiDataError(ErrorModel(message: 'Path Not Found')));
       return;
     }
 
@@ -113,7 +105,19 @@ class ApiDataBloc<MODEL> extends Bloc<ApiDataEvent, ApiDataState> {
     }
   }
 
-  Future<void> _getDataCollection(ApiDataCollection event, Emitter<ApiDataState> emit) async{
+  /* Future<void> _getDataSingle(ApiDataSingle event, Emitter<ApiDataState> emit) async{
+    emit(const ApiDataLoading());
+    
+    DataState state = await _getSingleDataUseCase.call(params: event.queryParams!);
+
+    if(state is DataSuccess){
+      emit(ApiDataLoaded<MODEL>(state.data));
+    }else{
+      emit(ApiDataError(state.error!));
+    }
+  } */
+
+  /* Future<void> _getDataCollection(ApiDataCollection event, Emitter<ApiDataState> emit) async{
     emit(const ApiDataLoading());
     DataState state = await _getCollectionDataUseCase.call(params: event.queryParams!);
 

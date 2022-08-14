@@ -1,9 +1,9 @@
 
 class QueryParams{
   // final String? apiKey;
-  final String endpoint;
-  final String? pathId;
-  final String? queryWord;
+  String endpoint;
+  String? pathId;
+  String? queryWord;
   // final String? sortBy;
   // final String? language;
   // final String? sources;
