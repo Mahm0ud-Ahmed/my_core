@@ -68,7 +68,8 @@ class ThemeManager extends ChangeNotifier {
   bool get isLight => mode == ThemeMode.light ? true : false;
 
   void setThemeData() {
-    _themeData = ThemeData(
+    _themeData = 
+      ThemeData(
         primarySwatch: _theme.primarySwatch,
         primaryColor: _theme.color[0],
         scaffoldBackgroundColor: _theme.color[0],
@@ -82,7 +83,9 @@ class ThemeManager extends ChangeNotifier {
         fontFamily: Typography.whiteMountainView.displayLarge?.fontFamily,
         textTheme: !isLight
             ? Typography.whiteMountainView
-            : Typography.blackMountainView);
+            : Typography.blackMountainView,
+        
+    );
   }
 
   void setSystemStatusDefaultColor() {

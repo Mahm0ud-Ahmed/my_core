@@ -22,15 +22,15 @@ class ApiPaginationModel<MODEL> extends Equatable {
   factory ApiPaginationModel.fromJson(Map<String, dynamic> json) {
 
     ClassMirror classMirror = modelReflector.reflectType(MODEL) as ClassMirror;
-    List<MODEL> data = [];
-    for (var element in (json["articles"] as List)) {
-      data.add(classMirror.newInstance('fromJson', [element]) as MODEL);
-    }
+    // List<MODEL> data = [];
+    // for (var element in (json["articles"] as List)) {
+    //   data.add(classMirror.newInstance('fromJson', [element]) as MODEL);
+    // }
 
     return ApiPaginationModel<MODEL>(
       totalResults: json['totalResults'],
       status: json['status'],
-      data: data,
+      data: (json['articles'] as List).map<MODEL>((e) => classMirror.newInstance('fromJson', [e]) as MODEL,).toList(),
     );
   }
   @override

@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 
@@ -17,7 +19,6 @@ class HomeScreenPage extends StatefulWidget {
 class _HomeScreenPageState extends State<HomeScreenPage> {
   final QueryParams _query = QueryParams(
     category: NewsCategory.business.category,
-    queryWord: 'dgfdg',
     pageSize: 10,
   );
 
@@ -31,17 +32,20 @@ class _HomeScreenPageState extends State<HomeScreenPage> {
 
   @override
   Widget build(BuildContext context) {
+    late ArticleModel _art;
     return Scaffold(
       appBar: AppBar(),
       body: PagedListView(
         pagingController: _articleBloc.controller, 
         builderDelegate: PagedChildBuilderDelegate<ArticleModel>(
           itemBuilder: (context, item, index) {
+            _art = item;
             return Text(item.content ?? '');
           },
         )
       ),
       floatingActionButton: FloatingActionButton(onPressed: () async{
+        print(jsonEncode(_art.toMap()));
         // await StorageService().saveBool('mode', true);
         // SettingService().changeThemeMode(DarkTheme());
       }),
