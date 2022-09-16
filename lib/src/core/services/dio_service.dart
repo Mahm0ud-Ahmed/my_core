@@ -1,33 +1,26 @@
-import 'package:aagel/src/core/services/service_interface.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
-import 'package:aagel/src/core/utils/constant.dart';
 
-class DioService implements ServiceInterface{
-  static late final Dio _dio;
+import '../utils/app_interceptor.dart';
+import '../utils/constant.dart';
+import 'service_interface.dart';
+
+class DioService implements ServiceInterface {
+  late final Dio _dio;
 
   @override
   String get name => "Api";
 
   @override
-  Future initialize() async {
+  Future<Dio> initialize() async {
     _dio = Dio(_baseOptions());
-    if(!kReleaseMode){
-      _dio.interceptors.add(
-        LogInterceptor(
-          error: false,
-          request: false,
-          requestHeader: false,
-          requestBody: false,
-          responseHeader: true,
-          responseBody: false,
-        )
-      );
+    if (!kReleaseMode) {
+      _dio.interceptors.add(AppInterceptor());
     }
-    return _dio;  
+    return _dio;
   }
 
-  static BaseOptions _baseOptions(){
+  static BaseOptions _baseOptions() {
     return BaseOptions(
       baseUrl: Constant.kBaseUrl,
       connectTimeout: 60 * 1000,
@@ -36,5 +29,4 @@ class DioService implements ServiceInterface{
       contentType: "application/json",
     );
   }
-  
 }

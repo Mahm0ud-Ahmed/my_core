@@ -1,6 +1,7 @@
-import 'package:aagel/src/core/services/service_interface.dart';
 import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import 'service_interface.dart';
 
 
 class StorageService extends ServiceInterface {
@@ -24,7 +25,7 @@ class StorageService extends ServiceInterface {
   }
 
   // Removing
-  Future<bool> clear(String key) async {
+  Future<bool> clear() async {
     return _preferences!.clear();
   }
 

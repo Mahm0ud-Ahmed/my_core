@@ -16,10 +16,13 @@ class LightTheme implements ITheme{
   @override
   List<Color> get appColor {
     return color = [
-      Colors.grey.shade200,
-      Colors.black,
-      Colors.green,
-
+      /* index = 0 */    const Color(0xFFFFFFFF),
+      /* index = 1 */    const Color(0xFF2B3A4B),
+      /* index = 2 */    const Color(0xFFFDDDE5),
+      /* index = 3 */    const Color(0xFFFF6861),
+      /* index = 4 */    const Color(0xFFFF7872),
+      /* index = 5 */    const Color(0xFF65676B),
+      /* index = 6 */    const Color(0xFF1A1B22),
     ];
   }
 

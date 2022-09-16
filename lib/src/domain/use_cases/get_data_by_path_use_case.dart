@@ -2,12 +2,13 @@
 import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
-import 'package:my_core/src/core/error/error_handler.dart';
-import 'package:my_core/src/core/usecase/usecase.dart';
-import 'package:my_core/src/core/utils/data_reflection.dart';
-import 'package:my_core/src/core/utils/data_state.dart';
-import 'package:my_core/src/core/utils/query_params.dart';
-import 'package:my_core/src/domain/repositories/i_app_repository.dart';
+
+import '../../core/error/error_handler.dart';
+import '../../core/usecase/usecase.dart';
+import '../../core/utils/data_reflection.dart';
+import '../../core/utils/data_state.dart';
+import '../../core/utils/query_params.dart';
+import '../repositories/i_app_repository.dart';
 
 class GetDataByPathUseCase<MODEL> extends UseCase{
 

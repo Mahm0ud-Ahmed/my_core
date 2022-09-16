@@ -13,7 +13,7 @@ class AppRepositoryImp extends IAppRepository{
     return await _apiService.getApiData(
       // apiKey: params.apiKey,
       querySearch: params.queryWord,
-      endpoint: params.endpoint,
+      endpoint: params.endpoint!,
       page: params.page.toString(),
       pageSize: params.pageSize.toString(),
     );
@@ -24,7 +24,7 @@ class AppRepositoryImp extends IAppRepository{
     return await _apiService.getApiDataByPath(
       // apiKey: params.apiKey,
       querySearch: params.queryWord,
-      endpoint: params.endpoint,
+      endpoint: params.endpoint!,
       pathId: params.pathId!,
     );
   }

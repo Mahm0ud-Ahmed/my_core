@@ -1,4 +1,4 @@
-import 'package:my_core/src/core/error/error_model.dart';
+import '../error/error_model.dart';
 
 abstract class DataState<T> {
   final T? data;

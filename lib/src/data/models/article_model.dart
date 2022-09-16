@@ -1,11 +1,17 @@
-import 'package:json_annotation/json_annotation.dart' show JsonSerializable;
-import 'package:my_core/src/core/utils/reflector.dart';
+
+import 'package:json_annotation/json_annotation.dart';
+
+import '../../core/utils/reflector.dart';
 
 part 'article_model.g.dart';
 
-@ModelReflector()
 @JsonSerializable()
-class ArticleModel{
+@ModelReflector()
+class ArticleModel {
+
+  @JsonKey(ignore: true)
+  final String route = 'top-headlines';
+
   final Map<String, dynamic>? source;
   final String? author;
   final String? title;
@@ -15,19 +21,19 @@ class ArticleModel{
   final String? publishedAt;
   final String? content;
 
-  const ArticleModel(
-    this.author,
-    this.content,
-    this.description,
-    this.publishedAt,
+  ArticleModel({
     this.source,
-    this.title,
-    this.url,
-    this.urlToImage,
-  );
+    this.author,
+    required this.title,
+    required this.description,
+    required this.url,
+    required this.urlToImage,
+    required this.publishedAt,
+    required this.content,
+  });
 
   factory ArticleModel.fromJson(Map<String, dynamic> json) => _$ArticleModelFromJson(json);
 
-  Map<String, dynamic> toJson() => _$ArticleModelToJson(this);
+  Map<String, dynamic> toMap() => _$ArticleModelToJson(this);
 
 }

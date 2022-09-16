@@ -5,7 +5,7 @@ class PaginationCriteria {
   int? total;
   
   PaginationCriteria({
-    this.pageNumber = 0,
+    this.pageNumber = 1,
     this.pageSize = 10,
     this.total,
   });
@@ -13,10 +13,5 @@ class PaginationCriteria {
   int get getPageNumber => pageNumber;
   int get getPageSize => pageSize;
   int? get getTotal => total;
-
-  set setPageNumber(int pageNumber) => pageNumber = pageNumber;
-  set setPageSize(int pageSize) => pageSize = pageSize;
-  set setTotal(int total) => total = total;
-
   
 }

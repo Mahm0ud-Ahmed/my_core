@@ -2,18 +2,19 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
-import 'package:my_core/src/core/error/error_handler.dart';
-import 'package:my_core/src/core/usecase/usecase.dart';
-import 'package:my_core/src/core/utils/data_state.dart';
-import 'package:my_core/src/core/utils/query_params.dart';
-import 'package:my_core/src/domain/repositories/i_app_repository.dart';
+import '../../core/error/error_handler.dart';
+import '../../core/usecase/usecase.dart';
+import '../../core/utils/data_state.dart';
+import '../../core/utils/query_params.dart';
+import '../repositories/i_app_repository.dart';
 
-import '../../data/models/product_pagination_model.dart';
+import '../../data/models/api_pagination_model.dart';
+
 
 class GetPaginationDataUseCase<MODEL> extends UseCase{
 
   final IAppRepository _appRepository;
-  ProductPaginationModel<MODEL>? _paginationModel;
+  ApiPaginationModel<MODEL>? _paginationModel;
 
   GetPaginationDataUseCase(this._appRepository);
   
@@ -22,7 +23,7 @@ class GetPaginationDataUseCase<MODEL> extends UseCase{
     try {
       HttpResponse response = await _appRepository.getAllData(params);
       if(response.response.statusCode == HttpStatus.ok){
-        _paginationModel = ProductPaginationModel.fromJson(response.response.data);
+        _paginationModel = ApiPaginationModel.fromJson(response.response.data);
           return DataSuccess(_paginationModel);
       }else{
         return DataFailed(ErrorHandler.handleError(response.data));
