@@ -76,12 +76,12 @@ class ApiDataBloc<MODEL> extends Bloc<ApiDataEvent, ApiDataState> {
     emit(const ApiDataLoading());
     passPaginationForQuery();
 
-    DataState state = await _getPaginationDataUseCase.call(params: query!);
+    DataState<ApiPaginationModel<MODEL>?> state = await _getPaginationDataUseCase.call(params: query!);
     if (state is DataSuccess) {
-      ApiPaginationModel<MODEL> pagination =
-          state.data as ApiPaginationModel<MODEL>;
-      emit(ApiDataLoaded<ApiPaginationModel<MODEL>>(pagination));
-      newSettingForPagination(pagination);
+      // ApiPaginationModel<MODEL> pagination =
+      //     state.data as ApiPaginationModel<MODEL>;
+      emit(ApiDataLoaded<ApiPaginationModel<MODEL>>(state.data!));
+      newSettingForPagination(state.data!);
     } else {
       emit(ApiDataError(state.error!));
       controller.error = state.error;

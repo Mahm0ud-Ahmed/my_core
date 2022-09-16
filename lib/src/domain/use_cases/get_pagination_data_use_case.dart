@@ -19,12 +19,12 @@ class GetPaginationDataUseCase<MODEL> extends UseCase{
   GetPaginationDataUseCase(this._appRepository);
   
   @override
-  Future<DataState> call({required QueryParams params}) async {
+  Future<DataState<ApiPaginationModel<MODEL>?>> call({required QueryParams params}) async {
     try {
       HttpResponse response = await _appRepository.getAllData(params);
       if(response.response.statusCode == HttpStatus.ok){
         _paginationModel = ApiPaginationModel.fromJson(response.response.data);
-          return DataSuccess(_paginationModel);
+          return DataSuccess<ApiPaginationModel<MODEL>?>(_paginationModel);
       }else{
         return DataFailed(ErrorHandler.handleError(response.data));
       }

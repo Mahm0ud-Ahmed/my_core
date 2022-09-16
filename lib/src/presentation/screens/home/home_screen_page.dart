@@ -17,6 +17,7 @@ class HomeScreenPage extends StatefulWidget {
 class _HomeScreenPageState extends State<HomeScreenPage> {
   final QueryParams _query = QueryParams(
     category: NewsCategory.business.category,
+    queryWord: 'dgfdg',
     pageSize: 10,
   );
 
