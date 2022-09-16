@@ -1,7 +1,5 @@
-
 import 'package:json_annotation/json_annotation.dart';
-
-import '../../core/utils/reflector.dart';
+import 'package:my_core/src/core/utils/reflector.dart';
 
 part 'article_model.g.dart';
 

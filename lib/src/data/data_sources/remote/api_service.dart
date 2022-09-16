@@ -1,11 +1,12 @@
 
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
-import 'package:my_core/src/core/utils/constant_value.dart';
+
+import '../../../core/utils/constant.dart';
 
 part 'api_service.g.dart';
 
-@RestApi(baseUrl: ConstantValue.kBaseUrl)
+@RestApi(baseUrl: Constant.kBaseUrl)
 abstract class ApiService{
 
   factory ApiService(Dio dio, {String baseUrl}) = _ApiService;
@@ -14,7 +15,6 @@ abstract class ApiService{
   Future<HttpResponse> getApiData({
     @Path('endpoint') required String endpoint,
     @Query("q") String? querySearch,
-    @Query("apiKey") String? apiKey,
     @Query("sortBy") String? sortBy,
     @Query("language") String? language,
     @Query("sources") String? sources,
@@ -23,8 +23,9 @@ abstract class ApiService{
     @Query("to") String? to,
     @Query("country") String? country,
     @Query("category") String? category,
-    @Query("limit") String? pageSize,
-    @Query("skip") String? page,
+    @Query("pageSize") String? pageSize,
+    @Query("page") String? page,
+    @Query("apiKey") String? apiKey,
   });
 
   @GET('{endpoint}/{id}')
