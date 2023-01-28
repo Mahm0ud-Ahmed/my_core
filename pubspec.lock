@@ -25,14 +25,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.3.2"
-  asset_manager_cli:
-    dependency: "direct main"
-    description:
-      name: asset_manager_cli
-      sha256: de68179afbc0585372e9e8b5421c842c57e6cd1a316ee81b15cbb8c7c19628c7
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.1.3-dev.2+5"
   async:
     dependency: transitive
     description:
@@ -293,6 +285,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "10.3.0"
+  freezed:
+    dependency: "direct dev"
+    description:
+      name: freezed
+      sha256: e819441678f1679b719008ff2ff0ef045d66eed9f9ec81166ca0d9b02a187454
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.3.2"
+  freezed_annotation:
+    dependency: "direct main"
+    description:
+      name: freezed_annotation
+      sha256: aeac15850ef1b38ee368d4c53ba9a847e900bb2c53a4db3f6881cbb3cb684338
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.2.0"
   frontend_server_client:
     dependency: transitive
     description:
@@ -325,14 +333,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.2.0"
-  http:
-    dependency: transitive
-    description:
-      name: http
-      sha256: "6aa2946395183537c8b880962d935877325d6a09a2867c3970c05c0fed6ac482"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.13.5"
   http_multi_server:
     dependency: transitive
     description:
@@ -390,7 +390,7 @@ packages:
     source: hosted
     version: "4.8.0"
   json_serializable:
-    dependency: "direct main"
+    dependency: "direct dev"
     description:
       name: json_serializable
       sha256: "040088d9eb2337f3a51ddabe35261e2fea1c351e3dd29d755ed1290b6b700a75"
@@ -421,14 +421,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.1.1"
-  mason_logger:
-    dependency: transitive
-    description:
-      name: mason_logger
-      sha256: f307bade8d2557a11e4e3d6a218093454038d877e5f72a60482c9bb5fe7a9bac
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.1.4"
   matcher:
     dependency: transitive
     description:
@@ -557,14 +549,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.3"
-  pub_updater:
-    dependency: transitive
-    description:
-      name: pub_updater
-      sha256: "42890302ab2672adf567dc2b20e55b4ecc29d7e19c63b6b98143ab68dd717d3a"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.2.4"
   pubspec_parse:
     dependency: transitive
     description:
@@ -573,14 +557,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.2.1"
-  reflectable:
-    dependency: "direct main"
-    description:
-      name: reflectable
-      sha256: e21990e237008defe9abff5639ee4d0dcf854bb4cad4a653179736d9921fdfdd
-      url: "https://pub.dev"
-    source: hosted
-    version: "4.0.4"
   retrofit:
     dependency: "direct main"
     description:
