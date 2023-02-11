@@ -1,38 +1,53 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:equatable/equatable.dart';
-import 'package:reflectable/reflectable.dart';
 
+import 'package:json_annotation/json_annotation.dart';
 
-import '../../core/utils/reflector.dart';
+part 'api_pagination_model.g.dart';
 
-@ModelReflector()
-class ApiPaginationModel<MODEL> extends Equatable {
-  List<MODEL>? data;
-  int? totalResults;
-  String? status;
+@JsonSerializable(genericArgumentFactories: true)
+class ApiPaginationModel<MODEL> {
+  final int total;
 
-  ApiPaginationModel({
-    this.data,
-    this.totalResults,
-    this.status,
+  @JsonKey(name: 'per_page')
+  final int perPage;
+
+  @JsonKey(name: 'current_page')
+  final int currentPage;
+
+  @JsonKey(name: 'last_page')
+  final int lastPage;
+
+  // @JsonKey(name: 'first_page_url')
+  // final String firstPageUrl;
+  // @JsonKey(name: 'last_page_url')
+  // final String lastPageUrl;
+  // @JsonKey(name: 'next_page_url')
+  // final String? nextPageUrl;
+  // @JsonKey(name: 'prev_page_url')
+  // final String? prevPageUrl;
+  // final String path;
+  final int? from;
+  final int? to;
+  final List<MODEL> data;
+  
+  const ApiPaginationModel({
+    required this.total,
+    required this.perPage,
+    required this.currentPage,
+    required this.lastPage,
+    // required this.firstPageUrl,
+    // required this.lastPageUrl,
+    required this.data,
+    // this.nextPageUrl,
+    // this.prevPageUrl,
+    // required this.path,
+    this.from,
+    this.to,
   });
 
+  factory ApiPaginationModel.fromJson(
+    Map<String, dynamic> json,
+    MODEL Function(Object? json) fromJsonT,
+  ) => _$ApiPaginationModelFromJson(json, fromJsonT);
 
-
-  factory ApiPaginationModel.fromJson(Map<String, dynamic> json) {
-
-    ClassMirror classMirror = modelReflector.reflectType(MODEL) as ClassMirror;
-    // List<MODEL> data = [];
-    // for (var element in (json["articles"] as List)) {
-    //   data.add(classMirror.newInstance('fromJson', [element]) as MODEL);
-    // }
-
-    return ApiPaginationModel<MODEL>(
-      totalResults: json['totalResults'],
-      status: json['status'],
-      data: (json['articles'] as List).map<MODEL>((e) => classMirror.newInstance('fromJson', [e]) as MODEL,).toList(),
-    );
-  }
-  @override
-  List<Object?> get props => [data, totalResults, status];
 }

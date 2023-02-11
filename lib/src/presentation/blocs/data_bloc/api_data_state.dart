@@ -1,26 +1,28 @@
-part of 'api_data_bloc.dart';
+// part of 'api_data_bloc.dart';
 
-abstract class ApiDataState<T> extends Equatable {
-  final T? data;
-  final ErrorModel? error;
-  const ApiDataState({this.data, this.error});
-  
-  @override
-  List<Object?> get props => [data, error];
-}
+import 'package:my_core/src/presentation/blocs/data_bloc/api_data_event.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+import '../../../core/error/error.dart';
+import '../../../data/models/api_response_model.dart';
+part 'api_data_state.freezed.dart';
 
-class ApiDataIdle extends ApiDataState {
-  const ApiDataIdle();
-}
+@freezed
+class ApiDataState<T> with _$ApiDataState<T>{
 
-class ApiDataLoading extends ApiDataState {
-  const ApiDataLoading();
-}
+  const factory ApiDataState.idle() = ApiDataIdle;
 
-class ApiDataLoaded<T> extends ApiDataState<T> {
-  const ApiDataLoaded(T data): super(data: data);
-}
+  const factory ApiDataState.loading({
+    required ApiDataEvent event
+  }) = ApiDataLoading;
 
-class ApiDataError extends ApiDataState {
-  const ApiDataError(ErrorModel error): super(error: error);
+  const factory ApiDataState.loaded({
+    required T? data, 
+    required ApiResponseModel<T?> response, 
+    required ApiDataEvent event,
+  }) = ApiDataLoaded<T>;
+
+  const factory ApiDataState.error({
+    required Error? error, 
+    required ApiDataEvent event
+  }) = ApiDataError<T>;
 }

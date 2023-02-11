@@ -1,7 +1,4 @@
 import 'package:retrofit/dio.dart';
-
-import '../../core/services/storage_service.dart';
-import '../../core/utils/constant.dart';
 import '../../core/utils/query_params.dart';
 import '../../domain/repositories/i_app_repository.dart';
 import '../data_sources/remote/api_service.dart';
@@ -12,31 +9,26 @@ class AppRepositoryImp extends IAppRepository{
   AppRepositoryImp(this._apiService);
   
   @override
-  Future<HttpResponse> getAllData(QueryParams params) async {
-    return await _apiService.getApiData(
+  Future<HttpResponse> getGeneralData(QueryParams params) async{
+    return await _apiService.getData(
+      endpoint: params.endpoint,
+      page: params.page,
+      pageSize: params.pageSize,
+      userToken: getToken,
       apiKey: params.apiKey,
-      querySearch: params.queryWord,
-      endpoint: params.endpoint!,
-      page: params.page.toString(),
-      pageSize: params.pageSize.toString(),
-      category: params.category,
-      country: params.country ?? StorageService().getString(Constant.kLocaleCountryCode) ?? 'us',
-      from: params.from,
-      to: params.to,
-      language: params.language ?? StorageService().getString(Constant.kLocaleLanguageCode) ?? 'en',
-      searchIn: params.searchIn,
-      sortBy: params.sortBy,
-      sources: params.sources,
+      // path: params.path,
+      querySearch: params.querySearch,
     );
   }
   
-  @override
-  Future<HttpResponse> getShowDataByPath(QueryParams params) async {
-    return await _apiService.getApiDataByPath(
-      // apiKey: params.apiKey,
-      querySearch: params.queryWord,
-      endpoint: params.endpoint!,
-      pathId: params.pathId!,
-    );
+  String? get getToken {
+    // return 'Bearer 602|38ctNikBYh1AIyOQNjh47wDyZUqJeTDoyPEruMou';
+    return 'Bearer 2639|YXqNDjeGi6e1PRKWtXfEQ1AIaUysDHIedmuzZTZl';
+  // String? token = StorageService().getString(Constant.kUserToken);
+  // if (token != null && token.isNotEmpty) {
+  //   return 'Bearer 2581|rDqP1hpRhqPheMybTCYkywzmCtFBUzZiAMVRr5Md';
+  // }
+  // return null;
   }
+
 }

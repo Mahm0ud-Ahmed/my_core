@@ -12,29 +12,14 @@ abstract class ApiService{
   factory ApiService(Dio dio, {String baseUrl}) = _ApiService;
 
   @GET('{endpoint}')
-  Future<HttpResponse> getApiData({
+  @Header('Authorization')
+  Future<HttpResponse> getData({
     @Path('endpoint') required String endpoint,
+    @Query("page") int? page,
+    @Query("count") int? pageSize,
     @Query("q") String? querySearch,
-    @Query("sortBy") String? sortBy,
-    @Query("language") String? language,
-    @Query("sources") String? sources,
-    @Query("searchIn") String? searchIn,
-    @Query("from") String? from,
-    @Query("to") String? to,
-    @Query("country") String? country,
-    @Query("category") String? category,
-    @Query("pageSize") String? pageSize,
-    @Query("page") String? page,
     @Query("apiKey") String? apiKey,
+    @Header('Authorization') String? userToken,
   });
 
-  @GET('{endpoint}/{id}')
-  Future<HttpResponse> getApiDataByPath({
-    @Path('endpoint') required String endpoint,
-    @Path('id') required String pathId,
-    @Query("q") String? querySearch,
-    @Query("apiKey") String? apiKey,
-    @Query("pageSize") String? pageSize,
-    @Query("page") String? page,
-  });
 }

@@ -1,33 +1,19 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-part of 'api_data_bloc.dart';
+// part of 'api_data_bloc.dart';
 
-abstract class ApiDataEvent extends Equatable {
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-  QueryParams? queryParams;
+import '../../../core/utils/query_params.dart';
 
-  ApiDataEvent(this.queryParams);
+part 'api_data_event.freezed.dart';
 
-  @override
-  List<Object?> get props => [queryParams];
-}
+@freezed
+class ApiDataEvent with _$ApiDataEvent{
 
-/* class ApiDataCollection extends ApiDataEvent {
+  const factory ApiDataEvent.index({required QueryParams queryParams}) = ApiIndexData;
 
-  ApiDataCollection({QueryParams? queryParams}) : super(queryParams);
-}
+  const factory ApiDataEvent.show({required int id}) = ApiShowData;
 
-class ApiDataSingle extends ApiDataEvent {
+  const factory ApiDataEvent.general({required QueryParams queryParams}) = ApiGeneralData;
 
-  ApiDataSingle({QueryParams? queryParams}) : super(queryParams);
-} */
-
-class ApiDataPagination extends ApiDataEvent {
-
-  ApiDataPagination({QueryParams? queryParams}) : super(queryParams);
-}
-
-class ApiDataByPath extends ApiDataEvent {
-  String path;
-
-  ApiDataByPath(this.path, {QueryParams? queryParams}) : super(queryParams);
 }

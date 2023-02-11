@@ -1,39 +1,23 @@
-
-
-import 'package:my_core/src/core/utils/constant.dart';
-
-class QueryParams{
-  final String? apiKey;
-  String? endpoint;
-  String? pathId;
-  String? queryWord;
-  String? sortBy;
-  String? language;
-  String? sources;
-  String? searchIn;
-  String? from;
-  String? to;
-  String? country;
-  String? category;
+class QueryParams {
+  final String endpoint;
+  dynamic path;
+  String? userToken;
+  String? apiKey;
+  String? querySearch;
+  Map<String, dynamic>? body;
   int? pageSize;
   int? page;
+  int? resultCount;
 
   QueryParams({
-    this.endpoint,
-    this.apiKey = Constant.kApiKey,
-    this.pathId,
-    this.queryWord,
-    this.sortBy,
-    this.language,
-    this.sources,
-    this.searchIn,
-    this.from,
-    this.to,
-    this.country,
-    this.category,
+    required this.endpoint,
+    this.apiKey,
+    this.querySearch,
+    this.path,
+    this.body,
+    this.userToken,
     this.pageSize,
     this.page,
-  }
-);
-
+    this.resultCount,
+  });
 }

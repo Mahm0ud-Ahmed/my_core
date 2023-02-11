@@ -1,8 +1,8 @@
 import 'package:my_core/src/core/utils/data_state.dart';
-import 'package:my_core/src/core/utils/query_params.dart';
 
-abstract class UseCase{
+abstract class UseCase<R, Q>{
 
-  Future<DataState> call({required QueryParams params});
+  Future<DataState<R>> call(Q query);
+  // Future<DataState> call({required QueryParams params});
   
 }

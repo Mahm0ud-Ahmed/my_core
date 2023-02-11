@@ -1,4 +1,4 @@
-import 'package:json_annotation/json_annotation.dart';
+/* import 'package:json_annotation/json_annotation.dart';
 import 'package:my_core/src/core/utils/reflector.dart';
 
 part 'article_model.g.dart';
@@ -34,4 +34,4 @@ class ArticleModel {
 
   Map<String, dynamic> toMap() => _$ArticleModelToJson(this);
 
-}
+} */
