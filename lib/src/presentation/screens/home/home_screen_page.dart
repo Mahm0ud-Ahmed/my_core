@@ -8,9 +8,9 @@ import 'package:my_core/src/presentation/blocs/data_bloc/api_data_event.dart';
 
 import '../../../core/utils/enums.dart';
 import '../../../core/utils/query_params.dart';
-import '../../../data/models/course_model.dart';
-import '../../../data/models/home_model.dart';
-import '../../../data/models/message_model.dart';
+import '../../../domain/entities/course_model.dart';
+import '../../../domain/entities/home_model.dart';
+import '../../../domain/entities/message_model.dart';
 import '../../blocs/data_bloc/api_data_bloc.dart';
 import '../../blocs/data_bloc/api_data_state.dart';
 
@@ -28,8 +28,6 @@ class _HomeScreenPageState extends State<HomeScreenPage> {
   // static String path = '/chat/chat_message?with=';
   final QueryParams _query = QueryParams(
     endpoint: path,
-    pageSize: 30,
-    page: 1,
   );
 
   late final ApiDataBloc _testBloc;
@@ -57,7 +55,7 @@ class _HomeScreenPageState extends State<HomeScreenPage> {
       bloc: _testBloc,
       builder: (context, ApiDataState state) {
         List data = [];
-        if(state is ApiDataLoaded){
+        if(state is ApiDataSuccess){
           data = state.data!;
         }
         return Scaffold(

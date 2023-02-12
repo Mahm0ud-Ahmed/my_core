@@ -15,9 +15,15 @@ class AppRepositoryImp extends IAppRepository{
       page: params.page,
       pageSize: params.pageSize,
       userToken: getToken,
-      apiKey: params.apiKey,
-      // path: params.path,
-      querySearch: params.querySearch,
+    );
+  }
+
+  @override
+  Future<HttpResponse> store(QueryParams query) {
+    return _apiService.store(
+      userToken: getToken,
+      endpoint: query.endpoint,
+      body: query.body!,
     );
   }
   

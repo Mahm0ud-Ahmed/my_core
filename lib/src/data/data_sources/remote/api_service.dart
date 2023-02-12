@@ -16,10 +16,17 @@ abstract class ApiService{
   Future<HttpResponse> getData({
     @Path('endpoint') required String endpoint,
     @Query("page") int? page,
-    @Query("count") int? pageSize,
-    @Query("q") String? querySearch,
-    @Query("apiKey") String? apiKey,
+    @Query("per_page") int? pageSize,
     @Header('Authorization') String? userToken,
   });
+
+  @POST('{endpoint}')
+  @Header('Authorization')
+  Future<HttpResponse> store({
+    @Header('Authorization') required userToken,
+    @Path('endpoint') required String endpoint,
+    @Body() required Map<String, dynamic> body,
+  });
+
 
 }

@@ -1,9 +1,7 @@
 class QueryParams {
   final String endpoint;
-  dynamic path;
   String? userToken;
-  String? apiKey;
-  String? querySearch;
+  // String? querySearch;
   Map<String, dynamic>? body;
   int? pageSize;
   int? page;
@@ -11,9 +9,7 @@ class QueryParams {
 
   QueryParams({
     required this.endpoint,
-    this.apiKey,
-    this.querySearch,
-    this.path,
+    // this.querySearch,
     this.body,
     this.userToken,
     this.pageSize,

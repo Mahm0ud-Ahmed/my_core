@@ -7,5 +7,5 @@ abstract class IAppRepository{
   // Future<HttpResponse> getIndexData(QueryParams params);
   // Future<HttpResponse> getShowData(QueryParams params);
   Future<HttpResponse> getGeneralData(QueryParams params);
-  
+  Future<HttpResponse> store(QueryParams query);
 }

@@ -22,7 +22,7 @@ mixin _$ApiDataState<T> {
     required TResult Function(ApiDataEvent event) loading,
     required TResult Function(
             T? data, ApiResponseModel<T?> response, ApiDataEvent event)
-        loaded,
+        success,
     required TResult Function(Error? error, ApiDataEvent event) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -32,7 +32,7 @@ mixin _$ApiDataState<T> {
     TResult? Function(ApiDataEvent event)? loading,
     TResult? Function(
             T? data, ApiResponseModel<T?> response, ApiDataEvent event)?
-        loaded,
+        success,
     TResult? Function(Error? error, ApiDataEvent event)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -42,7 +42,7 @@ mixin _$ApiDataState<T> {
     TResult Function(ApiDataEvent event)? loading,
     TResult Function(
             T? data, ApiResponseModel<T?> response, ApiDataEvent event)?
-        loaded,
+        success,
     TResult Function(Error? error, ApiDataEvent event)? error,
     required TResult orElse(),
   }) =>
@@ -51,7 +51,7 @@ mixin _$ApiDataState<T> {
   TResult map<TResult extends Object?>({
     required TResult Function(ApiDataIdle<T> value) idle,
     required TResult Function(ApiDataLoading<T> value) loading,
-    required TResult Function(ApiDataLoaded<T> value) loaded,
+    required TResult Function(ApiDataSuccess<T> value) success,
     required TResult Function(ApiDataError<T> value) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -59,7 +59,7 @@ mixin _$ApiDataState<T> {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(ApiDataIdle<T> value)? idle,
     TResult? Function(ApiDataLoading<T> value)? loading,
-    TResult? Function(ApiDataLoaded<T> value)? loaded,
+    TResult? Function(ApiDataSuccess<T> value)? success,
     TResult? Function(ApiDataError<T> value)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -67,7 +67,7 @@ mixin _$ApiDataState<T> {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ApiDataIdle<T> value)? idle,
     TResult Function(ApiDataLoading<T> value)? loading,
-    TResult Function(ApiDataLoaded<T> value)? loaded,
+    TResult Function(ApiDataSuccess<T> value)? success,
     TResult Function(ApiDataError<T> value)? error,
     required TResult orElse(),
   }) =>
@@ -134,7 +134,7 @@ class _$ApiDataIdle<T> implements ApiDataIdle<T> {
     required TResult Function(ApiDataEvent event) loading,
     required TResult Function(
             T? data, ApiResponseModel<T?> response, ApiDataEvent event)
-        loaded,
+        success,
     required TResult Function(Error? error, ApiDataEvent event) error,
   }) {
     return idle();
@@ -147,7 +147,7 @@ class _$ApiDataIdle<T> implements ApiDataIdle<T> {
     TResult? Function(ApiDataEvent event)? loading,
     TResult? Function(
             T? data, ApiResponseModel<T?> response, ApiDataEvent event)?
-        loaded,
+        success,
     TResult? Function(Error? error, ApiDataEvent event)? error,
   }) {
     return idle?.call();
@@ -160,7 +160,7 @@ class _$ApiDataIdle<T> implements ApiDataIdle<T> {
     TResult Function(ApiDataEvent event)? loading,
     TResult Function(
             T? data, ApiResponseModel<T?> response, ApiDataEvent event)?
-        loaded,
+        success,
     TResult Function(Error? error, ApiDataEvent event)? error,
     required TResult orElse(),
   }) {
@@ -175,7 +175,7 @@ class _$ApiDataIdle<T> implements ApiDataIdle<T> {
   TResult map<TResult extends Object?>({
     required TResult Function(ApiDataIdle<T> value) idle,
     required TResult Function(ApiDataLoading<T> value) loading,
-    required TResult Function(ApiDataLoaded<T> value) loaded,
+    required TResult Function(ApiDataSuccess<T> value) success,
     required TResult Function(ApiDataError<T> value) error,
   }) {
     return idle(this);
@@ -186,7 +186,7 @@ class _$ApiDataIdle<T> implements ApiDataIdle<T> {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(ApiDataIdle<T> value)? idle,
     TResult? Function(ApiDataLoading<T> value)? loading,
-    TResult? Function(ApiDataLoaded<T> value)? loaded,
+    TResult? Function(ApiDataSuccess<T> value)? success,
     TResult? Function(ApiDataError<T> value)? error,
   }) {
     return idle?.call(this);
@@ -197,7 +197,7 @@ class _$ApiDataIdle<T> implements ApiDataIdle<T> {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ApiDataIdle<T> value)? idle,
     TResult Function(ApiDataLoading<T> value)? loading,
-    TResult Function(ApiDataLoaded<T> value)? loaded,
+    TResult Function(ApiDataSuccess<T> value)? success,
     TResult Function(ApiDataError<T> value)? error,
     required TResult orElse(),
   }) {
@@ -290,7 +290,7 @@ class _$ApiDataLoading<T> implements ApiDataLoading<T> {
     required TResult Function(ApiDataEvent event) loading,
     required TResult Function(
             T? data, ApiResponseModel<T?> response, ApiDataEvent event)
-        loaded,
+        success,
     required TResult Function(Error? error, ApiDataEvent event) error,
   }) {
     return loading(event);
@@ -303,7 +303,7 @@ class _$ApiDataLoading<T> implements ApiDataLoading<T> {
     TResult? Function(ApiDataEvent event)? loading,
     TResult? Function(
             T? data, ApiResponseModel<T?> response, ApiDataEvent event)?
-        loaded,
+        success,
     TResult? Function(Error? error, ApiDataEvent event)? error,
   }) {
     return loading?.call(event);
@@ -316,7 +316,7 @@ class _$ApiDataLoading<T> implements ApiDataLoading<T> {
     TResult Function(ApiDataEvent event)? loading,
     TResult Function(
             T? data, ApiResponseModel<T?> response, ApiDataEvent event)?
-        loaded,
+        success,
     TResult Function(Error? error, ApiDataEvent event)? error,
     required TResult orElse(),
   }) {
@@ -331,7 +331,7 @@ class _$ApiDataLoading<T> implements ApiDataLoading<T> {
   TResult map<TResult extends Object?>({
     required TResult Function(ApiDataIdle<T> value) idle,
     required TResult Function(ApiDataLoading<T> value) loading,
-    required TResult Function(ApiDataLoaded<T> value) loaded,
+    required TResult Function(ApiDataSuccess<T> value) success,
     required TResult Function(ApiDataError<T> value) error,
   }) {
     return loading(this);
@@ -342,7 +342,7 @@ class _$ApiDataLoading<T> implements ApiDataLoading<T> {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(ApiDataIdle<T> value)? idle,
     TResult? Function(ApiDataLoading<T> value)? loading,
-    TResult? Function(ApiDataLoaded<T> value)? loaded,
+    TResult? Function(ApiDataSuccess<T> value)? success,
     TResult? Function(ApiDataError<T> value)? error,
   }) {
     return loading?.call(this);
@@ -353,7 +353,7 @@ class _$ApiDataLoading<T> implements ApiDataLoading<T> {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ApiDataIdle<T> value)? idle,
     TResult Function(ApiDataLoading<T> value)? loading,
-    TResult Function(ApiDataLoaded<T> value)? loaded,
+    TResult Function(ApiDataSuccess<T> value)? success,
     TResult Function(ApiDataError<T> value)? error,
     required TResult orElse(),
   }) {
@@ -375,10 +375,10 @@ abstract class ApiDataLoading<T> implements ApiDataState<T> {
 }
 
 /// @nodoc
-abstract class _$$ApiDataLoadedCopyWith<T, $Res> {
-  factory _$$ApiDataLoadedCopyWith(
-          _$ApiDataLoaded<T> value, $Res Function(_$ApiDataLoaded<T>) then) =
-      __$$ApiDataLoadedCopyWithImpl<T, $Res>;
+abstract class _$$ApiDataSuccessCopyWith<T, $Res> {
+  factory _$$ApiDataSuccessCopyWith(
+          _$ApiDataSuccess<T> value, $Res Function(_$ApiDataSuccess<T>) then) =
+      __$$ApiDataSuccessCopyWithImpl<T, $Res>;
   @useResult
   $Res call({T? data, ApiResponseModel<T?> response, ApiDataEvent event});
 
@@ -386,11 +386,11 @@ abstract class _$$ApiDataLoadedCopyWith<T, $Res> {
 }
 
 /// @nodoc
-class __$$ApiDataLoadedCopyWithImpl<T, $Res>
-    extends _$ApiDataStateCopyWithImpl<T, $Res, _$ApiDataLoaded<T>>
-    implements _$$ApiDataLoadedCopyWith<T, $Res> {
-  __$$ApiDataLoadedCopyWithImpl(
-      _$ApiDataLoaded<T> _value, $Res Function(_$ApiDataLoaded<T>) _then)
+class __$$ApiDataSuccessCopyWithImpl<T, $Res>
+    extends _$ApiDataStateCopyWithImpl<T, $Res, _$ApiDataSuccess<T>>
+    implements _$$ApiDataSuccessCopyWith<T, $Res> {
+  __$$ApiDataSuccessCopyWithImpl(
+      _$ApiDataSuccess<T> _value, $Res Function(_$ApiDataSuccess<T>) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -400,7 +400,7 @@ class __$$ApiDataLoadedCopyWithImpl<T, $Res>
     Object? response = null,
     Object? event = null,
   }) {
-    return _then(_$ApiDataLoaded<T>(
+    return _then(_$ApiDataSuccess<T>(
       data: freezed == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
@@ -427,8 +427,8 @@ class __$$ApiDataLoadedCopyWithImpl<T, $Res>
 
 /// @nodoc
 
-class _$ApiDataLoaded<T> implements ApiDataLoaded<T> {
-  const _$ApiDataLoaded(
+class _$ApiDataSuccess<T> implements ApiDataSuccess<T> {
+  const _$ApiDataSuccess(
       {required this.data, required this.response, required this.event});
 
   @override
@@ -440,14 +440,14 @@ class _$ApiDataLoaded<T> implements ApiDataLoaded<T> {
 
   @override
   String toString() {
-    return 'ApiDataState<$T>.loaded(data: $data, response: $response, event: $event)';
+    return 'ApiDataState<$T>.success(data: $data, response: $response, event: $event)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ApiDataLoaded<T> &&
+            other is _$ApiDataSuccess<T> &&
             const DeepCollectionEquality().equals(other.data, data) &&
             (identical(other.response, response) ||
                 other.response == response) &&
@@ -461,8 +461,8 @@ class _$ApiDataLoaded<T> implements ApiDataLoaded<T> {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ApiDataLoadedCopyWith<T, _$ApiDataLoaded<T>> get copyWith =>
-      __$$ApiDataLoadedCopyWithImpl<T, _$ApiDataLoaded<T>>(this, _$identity);
+  _$$ApiDataSuccessCopyWith<T, _$ApiDataSuccess<T>> get copyWith =>
+      __$$ApiDataSuccessCopyWithImpl<T, _$ApiDataSuccess<T>>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -471,10 +471,10 @@ class _$ApiDataLoaded<T> implements ApiDataLoaded<T> {
     required TResult Function(ApiDataEvent event) loading,
     required TResult Function(
             T? data, ApiResponseModel<T?> response, ApiDataEvent event)
-        loaded,
+        success,
     required TResult Function(Error? error, ApiDataEvent event) error,
   }) {
-    return loaded(data, response, event);
+    return success(data, response, event);
   }
 
   @override
@@ -484,10 +484,10 @@ class _$ApiDataLoaded<T> implements ApiDataLoaded<T> {
     TResult? Function(ApiDataEvent event)? loading,
     TResult? Function(
             T? data, ApiResponseModel<T?> response, ApiDataEvent event)?
-        loaded,
+        success,
     TResult? Function(Error? error, ApiDataEvent event)? error,
   }) {
-    return loaded?.call(data, response, event);
+    return success?.call(data, response, event);
   }
 
   @override
@@ -497,12 +497,12 @@ class _$ApiDataLoaded<T> implements ApiDataLoaded<T> {
     TResult Function(ApiDataEvent event)? loading,
     TResult Function(
             T? data, ApiResponseModel<T?> response, ApiDataEvent event)?
-        loaded,
+        success,
     TResult Function(Error? error, ApiDataEvent event)? error,
     required TResult orElse(),
   }) {
-    if (loaded != null) {
-      return loaded(data, response, event);
+    if (success != null) {
+      return success(data, response, event);
     }
     return orElse();
   }
@@ -512,10 +512,10 @@ class _$ApiDataLoaded<T> implements ApiDataLoaded<T> {
   TResult map<TResult extends Object?>({
     required TResult Function(ApiDataIdle<T> value) idle,
     required TResult Function(ApiDataLoading<T> value) loading,
-    required TResult Function(ApiDataLoaded<T> value) loaded,
+    required TResult Function(ApiDataSuccess<T> value) success,
     required TResult Function(ApiDataError<T> value) error,
   }) {
-    return loaded(this);
+    return success(this);
   }
 
   @override
@@ -523,10 +523,10 @@ class _$ApiDataLoaded<T> implements ApiDataLoaded<T> {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(ApiDataIdle<T> value)? idle,
     TResult? Function(ApiDataLoading<T> value)? loading,
-    TResult? Function(ApiDataLoaded<T> value)? loaded,
+    TResult? Function(ApiDataSuccess<T> value)? success,
     TResult? Function(ApiDataError<T> value)? error,
   }) {
-    return loaded?.call(this);
+    return success?.call(this);
   }
 
   @override
@@ -534,28 +534,28 @@ class _$ApiDataLoaded<T> implements ApiDataLoaded<T> {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ApiDataIdle<T> value)? idle,
     TResult Function(ApiDataLoading<T> value)? loading,
-    TResult Function(ApiDataLoaded<T> value)? loaded,
+    TResult Function(ApiDataSuccess<T> value)? success,
     TResult Function(ApiDataError<T> value)? error,
     required TResult orElse(),
   }) {
-    if (loaded != null) {
-      return loaded(this);
+    if (success != null) {
+      return success(this);
     }
     return orElse();
   }
 }
 
-abstract class ApiDataLoaded<T> implements ApiDataState<T> {
-  const factory ApiDataLoaded(
+abstract class ApiDataSuccess<T> implements ApiDataState<T> {
+  const factory ApiDataSuccess(
       {required final T? data,
       required final ApiResponseModel<T?> response,
-      required final ApiDataEvent event}) = _$ApiDataLoaded<T>;
+      required final ApiDataEvent event}) = _$ApiDataSuccess<T>;
 
   T? get data;
   ApiResponseModel<T?> get response;
   ApiDataEvent get event;
   @JsonKey(ignore: true)
-  _$$ApiDataLoadedCopyWith<T, _$ApiDataLoaded<T>> get copyWith =>
+  _$$ApiDataSuccessCopyWith<T, _$ApiDataSuccess<T>> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -658,7 +658,7 @@ class _$ApiDataError<T> implements ApiDataError<T> {
     required TResult Function(ApiDataEvent event) loading,
     required TResult Function(
             T? data, ApiResponseModel<T?> response, ApiDataEvent event)
-        loaded,
+        success,
     required TResult Function(Error? error, ApiDataEvent event) error,
   }) {
     return error(this.error, event);
@@ -671,7 +671,7 @@ class _$ApiDataError<T> implements ApiDataError<T> {
     TResult? Function(ApiDataEvent event)? loading,
     TResult? Function(
             T? data, ApiResponseModel<T?> response, ApiDataEvent event)?
-        loaded,
+        success,
     TResult? Function(Error? error, ApiDataEvent event)? error,
   }) {
     return error?.call(this.error, event);
@@ -684,7 +684,7 @@ class _$ApiDataError<T> implements ApiDataError<T> {
     TResult Function(ApiDataEvent event)? loading,
     TResult Function(
             T? data, ApiResponseModel<T?> response, ApiDataEvent event)?
-        loaded,
+        success,
     TResult Function(Error? error, ApiDataEvent event)? error,
     required TResult orElse(),
   }) {
@@ -699,7 +699,7 @@ class _$ApiDataError<T> implements ApiDataError<T> {
   TResult map<TResult extends Object?>({
     required TResult Function(ApiDataIdle<T> value) idle,
     required TResult Function(ApiDataLoading<T> value) loading,
-    required TResult Function(ApiDataLoaded<T> value) loaded,
+    required TResult Function(ApiDataSuccess<T> value) success,
     required TResult Function(ApiDataError<T> value) error,
   }) {
     return error(this);
@@ -710,7 +710,7 @@ class _$ApiDataError<T> implements ApiDataError<T> {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(ApiDataIdle<T> value)? idle,
     TResult? Function(ApiDataLoading<T> value)? loading,
-    TResult? Function(ApiDataLoaded<T> value)? loaded,
+    TResult? Function(ApiDataSuccess<T> value)? success,
     TResult? Function(ApiDataError<T> value)? error,
   }) {
     return error?.call(this);
@@ -721,7 +721,7 @@ class _$ApiDataError<T> implements ApiDataError<T> {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ApiDataIdle<T> value)? idle,
     TResult Function(ApiDataLoading<T> value)? loading,
-    TResult Function(ApiDataLoaded<T> value)? loaded,
+    TResult Function(ApiDataSuccess<T> value)? success,
     TResult Function(ApiDataError<T> value)? error,
     required TResult orElse(),
   }) {

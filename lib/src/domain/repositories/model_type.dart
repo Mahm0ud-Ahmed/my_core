@@ -1,10 +1,7 @@
-
-import 'package:my_core/src/data/models/api_pagination_model.dart';
-
-import '../../data/models/course_model.dart';
-import '../../data/models/home_model.dart';
-import '../../data/models/message_model.dart';
-import '../../data/models/product_model.dart';
+import '../entities/course_model.dart';
+import '../entities/home_model.dart';
+import '../entities/message_model.dart';
+import '../entities/product_model.dart';
 
 class ModelType{
 

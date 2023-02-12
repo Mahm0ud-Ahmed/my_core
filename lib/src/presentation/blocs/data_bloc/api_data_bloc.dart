@@ -9,20 +9,23 @@ import '../../../data/models/api_pagination_model.dart';
 import '../../../domain/use_cases/get_general_data_use_case.dart';
 import '../../../domain/use_cases/get_index_data_use_case.dart';
 import '../../../domain/use_cases/get_list_data_use_case.dart';
+import '../../../domain/use_cases/store_use_case.dart';
 import 'api_data_event.dart';
 import 'api_data_state.dart';
 
 class ApiDataBloc<MODEL> extends Bloc<ApiDataEvent, ApiDataState> {
-  final GetGeneralDataUseCase<MODEL> _getGeneralDataUseCase = GetGeneralDataUseCase(injector());
-  final GetIndexDataUseCase<MODEL> _getIndexDataUseCase = GetIndexDataUseCase(injector());
-  final GetListDataUseCase<MODEL> _getListDataUseCase = GetListDataUseCase(injector());
+  final GetGeneralDataUseCase<MODEL> _getGeneralDataUseCase = GetGeneralDataUseCase<MODEL>(injector());
+  final GetIndexDataUseCase<MODEL> _getIndexDataUseCase = GetIndexDataUseCase<MODEL>(injector());
+  final GetListDataUseCase<MODEL> _getListDataUseCase = GetListDataUseCase<MODEL>(injector());
+  final StoreUseCase<MODEL> _storeUseCase = StoreUseCase<MODEL>(injector());
   
   PagingController<int, MODEL>? controller;
   QueryParams? query;
   final bool withoutPagination;
 
   ApiDataBloc({this.query, this.withoutPagination = false}) : super(const ApiDataIdle()) {
-    on<ApiGeneralData>((event, emit) => _getGeneralData(event, emit));
+    on<ApiGeneralData>((event, emit) => _getGeneralData);
+    on<ApiStoreData>((event, emit) => _store);
     on<ApiIndexData>((event, emit) {
       query ??= event.queryParams;
       if(withoutPagination){
@@ -63,6 +66,14 @@ class ApiDataBloc<MODEL> extends Bloc<ApiDataEvent, ApiDataState> {
 
   bool noMoreData(ApiPaginationModel<MODEL> pagination) {
     if (controller?.itemList != null) {
+      return controller!.itemList!.length >= pagination.total || query?.pageSize != pagination.data.length;
+    } else {
+      return pagination.total <= query!.pageSize! ? true : false;
+    }
+  }
+
+  /* bool noMoreData(ApiPaginationModel<MODEL> pagination) {
+    if (controller?.itemList != null) {
       return query?.resultCount == null
           ? controller!.itemList!.length >= pagination.total || query?.pageSize != pagination.data.length
           : pagination.total > query!.resultCount!
@@ -71,14 +82,14 @@ class ApiDataBloc<MODEL> extends Bloc<ApiDataEvent, ApiDataState> {
     } else {
       return pagination.total <= query!.pageSize! ? true : false;
     }
-  }
+  } */
   
   Future<void> _getGeneralData(ApiGeneralData event, Emitter<ApiDataState> emit) async{
     emit(ApiDataLoading(event: event));
     final DataState<ApiResponseModel<MODEL>> dataState = await _getGeneralDataUseCase(event.queryParams);
     dataState.when(
       success: (successState) {
-        emit(ApiDataLoaded<MODEL>(data: successState?.data, response: successState!, event: event));
+        emit(ApiDataSuccess<MODEL>(data: successState?.data, response: successState!, event: event));
       }, 
       failure: (errorState) {
         emit(ApiDataError<MODEL>(error: errorState, event: event));
@@ -91,7 +102,7 @@ class ApiDataBloc<MODEL> extends Bloc<ApiDataEvent, ApiDataState> {
     final DataState<ApiResponseModel<ApiPaginationModel<MODEL>>> dataState = await _getIndexDataUseCase(event.queryParams);
     dataState.when(
       success: (successState) {
-        emit(ApiDataLoaded<ApiPaginationModel<MODEL>>(data: successState?.data, response: successState!, event: event));
+        emit(ApiDataSuccess<ApiPaginationModel<MODEL>>(data: successState?.data, response: successState!, event: event));
         if(controller != null){
           newSettingForPagination(successState.data);
         }
@@ -107,7 +118,20 @@ class ApiDataBloc<MODEL> extends Bloc<ApiDataEvent, ApiDataState> {
     final DataState<ApiResponseModel<List<MODEL>>> dataState = await _getListDataUseCase(event.queryParams);
     dataState.when(
       success: (successState) {
-        emit(ApiDataLoaded<List<MODEL>>(data: successState?.data, response: successState!, event: event));
+        emit(ApiDataSuccess<List<MODEL>>(data: successState?.data, response: successState!, event: event));
+      }, 
+      failure: (errorState) {
+        emit(ApiDataError<MODEL>(error: errorState, event: event));
+      },
+    );
+  }
+  
+  Future<void> _store(ApiStoreData event, Emitter<ApiDataState> emit) async{
+    emit(ApiDataLoading(event: event));
+    final DataState<ApiResponseModel<MODEL>> dataState = await _storeUseCase(event.queryParams);
+    dataState.when(
+      success: (successState) {
+        emit(ApiDataSuccess<MODEL>(data: successState?.data, response: successState!, event: event));
       }, 
       failure: (errorState) {
         emit(ApiDataError<MODEL>(error: errorState, event: event));

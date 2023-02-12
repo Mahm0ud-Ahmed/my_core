@@ -15,11 +15,11 @@ class ApiDataState<T> with _$ApiDataState<T>{
     required ApiDataEvent event
   }) = ApiDataLoading;
 
-  const factory ApiDataState.loaded({
+  const factory ApiDataState.success({
     required T? data, 
     required ApiResponseModel<T?> response, 
     required ApiDataEvent event,
-  }) = ApiDataLoaded<T>;
+  }) = ApiDataSuccess<T>;
 
   const factory ApiDataState.error({
     required Error? error, 

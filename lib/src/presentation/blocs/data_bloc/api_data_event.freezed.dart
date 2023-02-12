@@ -16,49 +16,60 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$ApiDataEvent {
+  QueryParams get queryParams => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(QueryParams queryParams) index,
-    required TResult Function(int id) show,
     required TResult Function(QueryParams queryParams) general,
+    required TResult Function(QueryParams queryParams) store,
+    required TResult Function(QueryParams queryParams) update,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(QueryParams queryParams)? index,
-    TResult? Function(int id)? show,
     TResult? Function(QueryParams queryParams)? general,
+    TResult? Function(QueryParams queryParams)? store,
+    TResult? Function(QueryParams queryParams)? update,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(QueryParams queryParams)? index,
-    TResult Function(int id)? show,
     TResult Function(QueryParams queryParams)? general,
+    TResult Function(QueryParams queryParams)? store,
+    TResult Function(QueryParams queryParams)? update,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(ApiIndexData value) index,
-    required TResult Function(ApiShowData value) show,
     required TResult Function(ApiGeneralData value) general,
+    required TResult Function(ApiStoreData value) store,
+    required TResult Function(ApiUpdateData value) update,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(ApiIndexData value)? index,
-    TResult? Function(ApiShowData value)? show,
     TResult? Function(ApiGeneralData value)? general,
+    TResult? Function(ApiStoreData value)? store,
+    TResult? Function(ApiUpdateData value)? update,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ApiIndexData value)? index,
-    TResult Function(ApiShowData value)? show,
     TResult Function(ApiGeneralData value)? general,
+    TResult Function(ApiStoreData value)? store,
+    TResult Function(ApiUpdateData value)? update,
     required TResult orElse(),
   }) =>
+      throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $ApiDataEventCopyWith<ApiDataEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -67,6 +78,8 @@ abstract class $ApiDataEventCopyWith<$Res> {
   factory $ApiDataEventCopyWith(
           ApiDataEvent value, $Res Function(ApiDataEvent) then) =
       _$ApiDataEventCopyWithImpl<$Res, ApiDataEvent>;
+  @useResult
+  $Res call({QueryParams queryParams});
 }
 
 /// @nodoc
@@ -78,13 +91,28 @@ class _$ApiDataEventCopyWithImpl<$Res, $Val extends ApiDataEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? queryParams = null,
+  }) {
+    return _then(_value.copyWith(
+      queryParams: null == queryParams
+          ? _value.queryParams
+          : queryParams // ignore: cast_nullable_to_non_nullable
+              as QueryParams,
+    ) as $Val);
+  }
 }
 
 /// @nodoc
-abstract class _$$ApiIndexDataCopyWith<$Res> {
+abstract class _$$ApiIndexDataCopyWith<$Res>
+    implements $ApiDataEventCopyWith<$Res> {
   factory _$$ApiIndexDataCopyWith(
           _$ApiIndexData value, $Res Function(_$ApiIndexData) then) =
       __$$ApiIndexDataCopyWithImpl<$Res>;
+  @override
   @useResult
   $Res call({QueryParams queryParams});
 }
@@ -146,8 +174,9 @@ class _$ApiIndexData implements ApiIndexData {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(QueryParams queryParams) index,
-    required TResult Function(int id) show,
     required TResult Function(QueryParams queryParams) general,
+    required TResult Function(QueryParams queryParams) store,
+    required TResult Function(QueryParams queryParams) update,
   }) {
     return index(queryParams);
   }
@@ -156,8 +185,9 @@ class _$ApiIndexData implements ApiIndexData {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(QueryParams queryParams)? index,
-    TResult? Function(int id)? show,
     TResult? Function(QueryParams queryParams)? general,
+    TResult? Function(QueryParams queryParams)? store,
+    TResult? Function(QueryParams queryParams)? update,
   }) {
     return index?.call(queryParams);
   }
@@ -166,8 +196,9 @@ class _$ApiIndexData implements ApiIndexData {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(QueryParams queryParams)? index,
-    TResult Function(int id)? show,
     TResult Function(QueryParams queryParams)? general,
+    TResult Function(QueryParams queryParams)? store,
+    TResult Function(QueryParams queryParams)? update,
     required TResult orElse(),
   }) {
     if (index != null) {
@@ -180,8 +211,9 @@ class _$ApiIndexData implements ApiIndexData {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(ApiIndexData value) index,
-    required TResult Function(ApiShowData value) show,
     required TResult Function(ApiGeneralData value) general,
+    required TResult Function(ApiStoreData value) store,
+    required TResult Function(ApiUpdateData value) update,
   }) {
     return index(this);
   }
@@ -190,8 +222,9 @@ class _$ApiIndexData implements ApiIndexData {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(ApiIndexData value)? index,
-    TResult? Function(ApiShowData value)? show,
     TResult? Function(ApiGeneralData value)? general,
+    TResult? Function(ApiStoreData value)? store,
+    TResult? Function(ApiUpdateData value)? update,
   }) {
     return index?.call(this);
   }
@@ -200,8 +233,9 @@ class _$ApiIndexData implements ApiIndexData {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ApiIndexData value)? index,
-    TResult Function(ApiShowData value)? show,
     TResult Function(ApiGeneralData value)? general,
+    TResult Function(ApiStoreData value)? store,
+    TResult Function(ApiUpdateData value)? update,
     required TResult orElse(),
   }) {
     if (index != null) {
@@ -215,156 +249,21 @@ abstract class ApiIndexData implements ApiDataEvent {
   const factory ApiIndexData({required final QueryParams queryParams}) =
       _$ApiIndexData;
 
+  @override
   QueryParams get queryParams;
+  @override
   @JsonKey(ignore: true)
   _$$ApiIndexDataCopyWith<_$ApiIndexData> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$ApiShowDataCopyWith<$Res> {
-  factory _$$ApiShowDataCopyWith(
-          _$ApiShowData value, $Res Function(_$ApiShowData) then) =
-      __$$ApiShowDataCopyWithImpl<$Res>;
-  @useResult
-  $Res call({int id});
-}
-
-/// @nodoc
-class __$$ApiShowDataCopyWithImpl<$Res>
-    extends _$ApiDataEventCopyWithImpl<$Res, _$ApiShowData>
-    implements _$$ApiShowDataCopyWith<$Res> {
-  __$$ApiShowDataCopyWithImpl(
-      _$ApiShowData _value, $Res Function(_$ApiShowData) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? id = null,
-  }) {
-    return _then(_$ApiShowData(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$ApiShowData implements ApiShowData {
-  const _$ApiShowData({required this.id});
-
-  @override
-  final int id;
-
-  @override
-  String toString() {
-    return 'ApiDataEvent.show(id: $id)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ApiShowData &&
-            (identical(other.id, id) || other.id == id));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, id);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$ApiShowDataCopyWith<_$ApiShowData> get copyWith =>
-      __$$ApiShowDataCopyWithImpl<_$ApiShowData>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(QueryParams queryParams) index,
-    required TResult Function(int id) show,
-    required TResult Function(QueryParams queryParams) general,
-  }) {
-    return show(id);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(QueryParams queryParams)? index,
-    TResult? Function(int id)? show,
-    TResult? Function(QueryParams queryParams)? general,
-  }) {
-    return show?.call(id);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(QueryParams queryParams)? index,
-    TResult Function(int id)? show,
-    TResult Function(QueryParams queryParams)? general,
-    required TResult orElse(),
-  }) {
-    if (show != null) {
-      return show(id);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(ApiIndexData value) index,
-    required TResult Function(ApiShowData value) show,
-    required TResult Function(ApiGeneralData value) general,
-  }) {
-    return show(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ApiIndexData value)? index,
-    TResult? Function(ApiShowData value)? show,
-    TResult? Function(ApiGeneralData value)? general,
-  }) {
-    return show?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(ApiIndexData value)? index,
-    TResult Function(ApiShowData value)? show,
-    TResult Function(ApiGeneralData value)? general,
-    required TResult orElse(),
-  }) {
-    if (show != null) {
-      return show(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class ApiShowData implements ApiDataEvent {
-  const factory ApiShowData({required final int id}) = _$ApiShowData;
-
-  int get id;
-  @JsonKey(ignore: true)
-  _$$ApiShowDataCopyWith<_$ApiShowData> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$ApiGeneralDataCopyWith<$Res> {
+abstract class _$$ApiGeneralDataCopyWith<$Res>
+    implements $ApiDataEventCopyWith<$Res> {
   factory _$$ApiGeneralDataCopyWith(
           _$ApiGeneralData value, $Res Function(_$ApiGeneralData) then) =
       __$$ApiGeneralDataCopyWithImpl<$Res>;
+  @override
   @useResult
   $Res call({QueryParams queryParams});
 }
@@ -426,8 +325,9 @@ class _$ApiGeneralData implements ApiGeneralData {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(QueryParams queryParams) index,
-    required TResult Function(int id) show,
     required TResult Function(QueryParams queryParams) general,
+    required TResult Function(QueryParams queryParams) store,
+    required TResult Function(QueryParams queryParams) update,
   }) {
     return general(queryParams);
   }
@@ -436,8 +336,9 @@ class _$ApiGeneralData implements ApiGeneralData {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(QueryParams queryParams)? index,
-    TResult? Function(int id)? show,
     TResult? Function(QueryParams queryParams)? general,
+    TResult? Function(QueryParams queryParams)? store,
+    TResult? Function(QueryParams queryParams)? update,
   }) {
     return general?.call(queryParams);
   }
@@ -446,8 +347,9 @@ class _$ApiGeneralData implements ApiGeneralData {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(QueryParams queryParams)? index,
-    TResult Function(int id)? show,
     TResult Function(QueryParams queryParams)? general,
+    TResult Function(QueryParams queryParams)? store,
+    TResult Function(QueryParams queryParams)? update,
     required TResult orElse(),
   }) {
     if (general != null) {
@@ -460,8 +362,9 @@ class _$ApiGeneralData implements ApiGeneralData {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(ApiIndexData value) index,
-    required TResult Function(ApiShowData value) show,
     required TResult Function(ApiGeneralData value) general,
+    required TResult Function(ApiStoreData value) store,
+    required TResult Function(ApiUpdateData value) update,
   }) {
     return general(this);
   }
@@ -470,8 +373,9 @@ class _$ApiGeneralData implements ApiGeneralData {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(ApiIndexData value)? index,
-    TResult? Function(ApiShowData value)? show,
     TResult? Function(ApiGeneralData value)? general,
+    TResult? Function(ApiStoreData value)? store,
+    TResult? Function(ApiUpdateData value)? update,
   }) {
     return general?.call(this);
   }
@@ -480,8 +384,9 @@ class _$ApiGeneralData implements ApiGeneralData {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ApiIndexData value)? index,
-    TResult Function(ApiShowData value)? show,
     TResult Function(ApiGeneralData value)? general,
+    TResult Function(ApiStoreData value)? store,
+    TResult Function(ApiUpdateData value)? update,
     required TResult orElse(),
   }) {
     if (general != null) {
@@ -495,8 +400,312 @@ abstract class ApiGeneralData implements ApiDataEvent {
   const factory ApiGeneralData({required final QueryParams queryParams}) =
       _$ApiGeneralData;
 
+  @override
   QueryParams get queryParams;
+  @override
   @JsonKey(ignore: true)
   _$$ApiGeneralDataCopyWith<_$ApiGeneralData> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ApiStoreDataCopyWith<$Res>
+    implements $ApiDataEventCopyWith<$Res> {
+  factory _$$ApiStoreDataCopyWith(
+          _$ApiStoreData value, $Res Function(_$ApiStoreData) then) =
+      __$$ApiStoreDataCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({QueryParams queryParams});
+}
+
+/// @nodoc
+class __$$ApiStoreDataCopyWithImpl<$Res>
+    extends _$ApiDataEventCopyWithImpl<$Res, _$ApiStoreData>
+    implements _$$ApiStoreDataCopyWith<$Res> {
+  __$$ApiStoreDataCopyWithImpl(
+      _$ApiStoreData _value, $Res Function(_$ApiStoreData) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? queryParams = null,
+  }) {
+    return _then(_$ApiStoreData(
+      queryParams: null == queryParams
+          ? _value.queryParams
+          : queryParams // ignore: cast_nullable_to_non_nullable
+              as QueryParams,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ApiStoreData implements ApiStoreData {
+  const _$ApiStoreData({required this.queryParams});
+
+  @override
+  final QueryParams queryParams;
+
+  @override
+  String toString() {
+    return 'ApiDataEvent.store(queryParams: $queryParams)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ApiStoreData &&
+            (identical(other.queryParams, queryParams) ||
+                other.queryParams == queryParams));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, queryParams);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ApiStoreDataCopyWith<_$ApiStoreData> get copyWith =>
+      __$$ApiStoreDataCopyWithImpl<_$ApiStoreData>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(QueryParams queryParams) index,
+    required TResult Function(QueryParams queryParams) general,
+    required TResult Function(QueryParams queryParams) store,
+    required TResult Function(QueryParams queryParams) update,
+  }) {
+    return store(queryParams);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(QueryParams queryParams)? index,
+    TResult? Function(QueryParams queryParams)? general,
+    TResult? Function(QueryParams queryParams)? store,
+    TResult? Function(QueryParams queryParams)? update,
+  }) {
+    return store?.call(queryParams);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(QueryParams queryParams)? index,
+    TResult Function(QueryParams queryParams)? general,
+    TResult Function(QueryParams queryParams)? store,
+    TResult Function(QueryParams queryParams)? update,
+    required TResult orElse(),
+  }) {
+    if (store != null) {
+      return store(queryParams);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ApiIndexData value) index,
+    required TResult Function(ApiGeneralData value) general,
+    required TResult Function(ApiStoreData value) store,
+    required TResult Function(ApiUpdateData value) update,
+  }) {
+    return store(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ApiIndexData value)? index,
+    TResult? Function(ApiGeneralData value)? general,
+    TResult? Function(ApiStoreData value)? store,
+    TResult? Function(ApiUpdateData value)? update,
+  }) {
+    return store?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ApiIndexData value)? index,
+    TResult Function(ApiGeneralData value)? general,
+    TResult Function(ApiStoreData value)? store,
+    TResult Function(ApiUpdateData value)? update,
+    required TResult orElse(),
+  }) {
+    if (store != null) {
+      return store(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ApiStoreData implements ApiDataEvent {
+  const factory ApiStoreData({required final QueryParams queryParams}) =
+      _$ApiStoreData;
+
+  @override
+  QueryParams get queryParams;
+  @override
+  @JsonKey(ignore: true)
+  _$$ApiStoreDataCopyWith<_$ApiStoreData> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ApiUpdateDataCopyWith<$Res>
+    implements $ApiDataEventCopyWith<$Res> {
+  factory _$$ApiUpdateDataCopyWith(
+          _$ApiUpdateData value, $Res Function(_$ApiUpdateData) then) =
+      __$$ApiUpdateDataCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({QueryParams queryParams});
+}
+
+/// @nodoc
+class __$$ApiUpdateDataCopyWithImpl<$Res>
+    extends _$ApiDataEventCopyWithImpl<$Res, _$ApiUpdateData>
+    implements _$$ApiUpdateDataCopyWith<$Res> {
+  __$$ApiUpdateDataCopyWithImpl(
+      _$ApiUpdateData _value, $Res Function(_$ApiUpdateData) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? queryParams = null,
+  }) {
+    return _then(_$ApiUpdateData(
+      queryParams: null == queryParams
+          ? _value.queryParams
+          : queryParams // ignore: cast_nullable_to_non_nullable
+              as QueryParams,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ApiUpdateData implements ApiUpdateData {
+  const _$ApiUpdateData({required this.queryParams});
+
+  @override
+  final QueryParams queryParams;
+
+  @override
+  String toString() {
+    return 'ApiDataEvent.update(queryParams: $queryParams)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ApiUpdateData &&
+            (identical(other.queryParams, queryParams) ||
+                other.queryParams == queryParams));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, queryParams);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ApiUpdateDataCopyWith<_$ApiUpdateData> get copyWith =>
+      __$$ApiUpdateDataCopyWithImpl<_$ApiUpdateData>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(QueryParams queryParams) index,
+    required TResult Function(QueryParams queryParams) general,
+    required TResult Function(QueryParams queryParams) store,
+    required TResult Function(QueryParams queryParams) update,
+  }) {
+    return update(queryParams);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(QueryParams queryParams)? index,
+    TResult? Function(QueryParams queryParams)? general,
+    TResult? Function(QueryParams queryParams)? store,
+    TResult? Function(QueryParams queryParams)? update,
+  }) {
+    return update?.call(queryParams);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(QueryParams queryParams)? index,
+    TResult Function(QueryParams queryParams)? general,
+    TResult Function(QueryParams queryParams)? store,
+    TResult Function(QueryParams queryParams)? update,
+    required TResult orElse(),
+  }) {
+    if (update != null) {
+      return update(queryParams);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ApiIndexData value) index,
+    required TResult Function(ApiGeneralData value) general,
+    required TResult Function(ApiStoreData value) store,
+    required TResult Function(ApiUpdateData value) update,
+  }) {
+    return update(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ApiIndexData value)? index,
+    TResult? Function(ApiGeneralData value)? general,
+    TResult? Function(ApiStoreData value)? store,
+    TResult? Function(ApiUpdateData value)? update,
+  }) {
+    return update?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ApiIndexData value)? index,
+    TResult Function(ApiGeneralData value)? general,
+    TResult Function(ApiStoreData value)? store,
+    TResult Function(ApiUpdateData value)? update,
+    required TResult orElse(),
+  }) {
+    if (update != null) {
+      return update(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ApiUpdateData implements ApiDataEvent {
+  const factory ApiUpdateData({required final QueryParams queryParams}) =
+      _$ApiUpdateData;
+
+  @override
+  QueryParams get queryParams;
+  @override
+  @JsonKey(ignore: true)
+  _$$ApiUpdateDataCopyWith<_$ApiUpdateData> get copyWith =>
       throw _privateConstructorUsedError;
 }
