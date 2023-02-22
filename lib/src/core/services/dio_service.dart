@@ -23,9 +23,9 @@ class DioService implements ServiceInterface {
   static BaseOptions _baseOptions() {
     return BaseOptions(
       baseUrl: Constant.kBaseUrl,
-      connectTimeout: 60 * 1000,
-      receiveTimeout: 60 * 1000,
-      sendTimeout: 60 * 1000,
+      connectTimeout: const Duration(minutes: 1),
+      receiveTimeout: const Duration(minutes: 30),
+      sendTimeout: const Duration(minutes: 5),
       contentType: "application/json",
     );
   }

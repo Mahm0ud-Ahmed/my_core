@@ -8,12 +8,9 @@ class Error with _$Error{
   
 
   const factory Error({
-    final bool? status,
-    final String? code,
+    final int? code,
     final String? message,
   }) = ErrorModel;
 
-  factory Error.fromJson(
-    Map<String, dynamic> json,
-  ) => _$ErrorFromJson(json);
+  factory Error.fromJson(Map<String, dynamic> json) => _$ErrorFromJson(json);
 }

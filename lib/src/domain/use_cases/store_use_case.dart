@@ -2,11 +2,10 @@
 import 'dart:io';
 
 // Package imports:
-import 'package:dio/dio.dart';
 import 'package:retrofit/dio.dart';
 
 // Project imports:
-import '../../core/error/error_handler.dart';
+import '../../core/error/app_exception.dart';
 import '../../core/usecase/usecase.dart';
 import '../../core/utils/data_state.dart';
 import '../../core/utils/query_params.dart';
@@ -32,10 +31,10 @@ class StoreUseCase<T> extends UseCase<ApiResponseModel<T>, QueryParams> {
           ),
         );
       } else {
-        return DataState.failure(ErrorHandler.handleError(response.data));
+        return DataState.failure(AppException(response.data).handleError);
       }
-    } on DioError catch (error) {
-      return DataState.failure(ErrorHandler.handleError(error));
+    } catch (error){
+      return DataState.failure(AppException(error).handleError);
     }
   }
 }

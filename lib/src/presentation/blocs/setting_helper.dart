@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../core/config/l10n/generated/l10n.dart';
 import '../../core/config/themes/dark_theme.dart';
 import '../../core/config/themes/language_manager.dart';
 import '../../core/config/themes/light_theme.dart';

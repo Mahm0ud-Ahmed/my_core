@@ -1,16 +1,8 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
-import 'package:my_core/src/data/models/api_pagination_model.dart';
 import 'package:my_core/src/presentation/blocs/data_bloc/api_data_event.dart';
 
-import '../../../core/utils/enums.dart';
 import '../../../core/utils/query_params.dart';
-import '../../../domain/entities/course_model.dart';
-import '../../../domain/entities/home_model.dart';
-import '../../../domain/entities/message_model.dart';
 import '../../blocs/data_bloc/api_data_bloc.dart';
 import '../../blocs/data_bloc/api_data_state.dart';
 
