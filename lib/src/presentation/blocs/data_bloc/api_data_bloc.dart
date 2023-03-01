@@ -89,7 +89,7 @@ class ApiDataBloc<MODEL> extends Bloc<ApiDataEvent, ApiDataState> {
     final DataState<ApiResponseModel<MODEL>> dataState = await _getGeneralDataUseCase(event.queryParams);
     dataState.when(
       success: (successState) {
-        emit(ApiDataSuccess<MODEL>(data: successState?.data, response: successState!, event: event));
+        emit(ApiDataSuccess<MODEL>(data: successState.data, response: successState, event: event));
       }, 
       failure: (errorState) {
         emit(ApiDataError<MODEL>(error: errorState, event: event));
@@ -102,7 +102,7 @@ class ApiDataBloc<MODEL> extends Bloc<ApiDataEvent, ApiDataState> {
     final DataState<ApiResponseModel<ApiPaginationModel<MODEL>>> dataState = await _getIndexDataUseCase(event.queryParams);
     dataState.when(
       success: (successState) {
-        emit(ApiDataSuccess<ApiPaginationModel<MODEL>>(data: successState?.data, response: successState!, event: event));
+        emit(ApiDataSuccess<ApiPaginationModel<MODEL>>(data: successState.data, response: successState, event: event));
         if(controller != null){
           newSettingForPagination(successState.data);
         }
@@ -118,7 +118,7 @@ class ApiDataBloc<MODEL> extends Bloc<ApiDataEvent, ApiDataState> {
     final DataState<ApiResponseModel<List<MODEL>>> dataState = await _getListDataUseCase(event.queryParams);
     dataState.when(
       success: (successState) {
-        emit(ApiDataSuccess<List<MODEL>>(data: successState?.data, response: successState!, event: event));
+        emit(ApiDataSuccess<List<MODEL>>(data: successState.data, response: successState, event: event));
       }, 
       failure: (errorState) {
         emit(ApiDataError<MODEL>(error: errorState, event: event));
@@ -128,13 +128,13 @@ class ApiDataBloc<MODEL> extends Bloc<ApiDataEvent, ApiDataState> {
   
   Future<void> _store(ApiStoreData event, Emitter<ApiDataState> emit) async{
     emit(ApiDataLoading(event: event));
-    final DataState<ApiResponseModel<MODEL>> dataState = await _storeUseCase(event.queryParams);
+    final DataState<ApiResponseModel<MODEL?>> dataState = await _storeUseCase(event.queryParams);
     dataState.when(
       success: (successState) {
-        emit(ApiDataSuccess<MODEL>(data: successState?.data, response: successState!, event: event));
+        emit(ApiDataSuccess<MODEL?>(data: successState.data, response: successState, event: event));
       }, 
       failure: (errorState) {
-        emit(ApiDataError<MODEL>(error: errorState, event: event));
+        emit(ApiDataError<MODEL?>(error: errorState, event: event));
       },
     );
   }
