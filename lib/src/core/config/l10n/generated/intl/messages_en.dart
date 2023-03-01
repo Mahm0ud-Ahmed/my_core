@@ -28,6 +28,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "The server acting as a gateway or proxy received an invalid response from the upstream server"),
         "cancel_error_message":
             MessageLookupByLibrary.simpleMessage("Request has been canceled"),
+        "check_connection_message": MessageLookupByLibrary.simpleMessage(
+            "Check your internet connection"),
         "client_closed_request_499_message": MessageLookupByLibrary.simpleMessage(
             "he client has closed the request before the server could send a response"),
         "conflict_409_message": MessageLookupByLibrary.simpleMessage(

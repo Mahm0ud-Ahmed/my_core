@@ -58,5 +58,7 @@
     "connection_error_message":"Unable to establish a connection. Please check your internet connection and try again",
     "cancel_error_message":"Request has been canceled",
     "unknown_error_message":"An unknown error has occurred. Please try again later",
-    "bad_certificate_message":"Certificate verification failed. Please make sure you're connected to a secure network and try again"
+    "bad_certificate_message":"Certificate verification failed. Please make sure you're connected to a secure network and try again",
+    "check_connection_message":"Check your internet connection"
+
 }

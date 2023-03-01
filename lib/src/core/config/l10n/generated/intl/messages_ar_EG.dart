@@ -28,6 +28,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "تلقى الخادم العامل كمعوّل أو بروكسي استجابة غير صالحة من الخادم الأعلى"),
         "cancel_error_message":
             MessageLookupByLibrary.simpleMessage("تم إلغاء الطلب"),
+        "check_connection_message":
+            MessageLookupByLibrary.simpleMessage("تحقق من اتصالك بالانترنت"),
         "client_closed_request_499_message":
             MessageLookupByLibrary.simpleMessage(
                 "أغلق العميل الطلب قبل أن يتمكن الخادم من إرسال رد"),

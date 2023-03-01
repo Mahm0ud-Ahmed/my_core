@@ -649,6 +649,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Check your internet connection`
+  String get check_connection_message {
+    return Intl.message(
+      'Check your internet connection',
+      name: 'check_connection_message',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
