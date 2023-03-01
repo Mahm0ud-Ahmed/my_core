@@ -26,13 +26,16 @@ class MyApp extends StatelessWidget {
       create: (context) => ApiDataBloc(),
       child: AnimatedBuilder(
           animation: Listenable.merge([ThemeManager(), LanguageManager()]),
-          builder: (context, child) => MaterialApp(
+          builder: (context, child) => MaterialApp.router(
+            routeInformationParser: injector<AppRoute>().route.routeInformationParser,
+            routeInformationProvider: injector<AppRoute>().route.routeInformationProvider,
+            routerDelegate: injector<AppRoute>().route.routerDelegate,
+            backButtonDispatcher: injector<AppRoute>().route.backButtonDispatcher,
             title: '3agel',
             debugShowCheckedModeBanner: false,
             theme: ThemeManager().myTheme, //Light Theme
             darkTheme: ThemeManager().myTheme,
             themeMode: ThemeManager().mode,
-            onGenerateRoute: AppRoute.generateRoute,
             localizationsDelegates: const [
               S.delegate,
               AppLocalizationDelegate(),
