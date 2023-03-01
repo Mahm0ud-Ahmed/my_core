@@ -56,7 +56,6 @@ class AppException implements Exception {
           }else{
             String message = getErrorMessage(error.response?.statusCode);
             errorModel = ErrorModel(
-              code: error.response?.statusMessage,
               message: message,
             );
           }
@@ -77,7 +76,7 @@ class AppException implements Exception {
     return errorModel;
   }
 
-  String getErrorMessage(int statusCode){
+  String getErrorMessage(int? statusCode){
     String message;
     switch (statusCode) {
       case HttpStatus.continue_:
@@ -199,6 +198,9 @@ class AppException implements Exception {
         break;
       case HttpStatus.networkConnectTimeoutError:
         message = S.current.network_connect_timeout_error_599_message;
+        break;
+      case null:
+        message = S.current.check_connection_message;
         break;
       default:
         return S.current.unknown_error_message;
