@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 
 import '../../data/data_sources/remote/api_service.dart';
@@ -8,12 +9,16 @@ import '../../presentation/blocs/data_bloc/api_data_bloc.dart';
 import '../services/dio_service.dart';
 import '../services/setting_service.dart';
 import '../services/storage_service.dart';
+import 'routes/app_route.dart';
 
 
 final injector = GetIt.instance;
 
 Future<void> initializeDependencies() async {
-
+  WidgetsFlutterBinding.ensureInitialized();
+  injector.registerSingleton<GlobalKey<NavigatorState>>(GlobalKey<NavigatorState>());
+  injector.registerSingleton<AppRoute>(AppRoute());
+  
   final dioService = await DioService().initialize();
 
   injector.registerLazySingleton<Dio>(() => dioService);
