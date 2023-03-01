@@ -21,7 +21,7 @@ class GetGeneralDataUseCase<T> extends UseCase<ApiResponseModel<T>, QueryParams>
       if(response.response.statusCode == HttpStatus.ok){
         final responseModel = ApiResponseModel<T>.fromJson(
           response.data, 
-          (json) => ModelType.getModel<T>(json!),
+          (json) => ModelType.getModel<T>(json!)!,
         );
         return DataState.success(responseModel);
       }else{

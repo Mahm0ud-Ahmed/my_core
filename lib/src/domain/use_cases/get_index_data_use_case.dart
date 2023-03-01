@@ -25,7 +25,7 @@ class GetIndexDataUseCase<T> extends UseCase<ApiResponseModel<ApiPaginationModel
           response.data, 
           (json) => ApiPaginationModel<T>.fromJson(
             json as Map<String, dynamic>, 
-            (json) => ModelType.getModel<T>(json!)
+            (json) => ModelType.getModel<T>(json!)!
           )
         );
         return DataState.success(responseModel);

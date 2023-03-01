@@ -13,23 +13,22 @@ import '../../data/models/api_response_model.dart';
 import '../repositories/i_app_repository.dart';
 import '../repositories/model_type.dart';
 
-class StoreUseCase<T> extends UseCase<ApiResponseModel<T>, QueryParams> {
+class StoreUseCase<T> extends UseCase<ApiResponseModel<T?>, QueryParams> {
   final IAppRepository _appRepository;
   Map<String, dynamic>? data;
 
   StoreUseCase(this._appRepository);
   
   @override
-  Future<DataState<ApiResponseModel<T>>> call(QueryParams query) async{
+  Future<DataState<ApiResponseModel<T?>>> call(QueryParams query) async{
     try {
       final HttpResponse response = await _appRepository.store(query);
       if (response.response.statusCode == HttpStatus.ok) {
-        return DataState.success(
-          ApiResponseModel<T>.fromJson(
+        final responseModel = ApiResponseModel<T?>.fromJson(
             response.data, 
-            (json) => ModelType.getModel<T>(json!),
-          ),
-        );
+            (json) => ModelType.getModel<T?>(json),
+          );
+        return DataState.success(responseModel);
       } else {
         return DataState.failure(AppException(response.data).handleError);
       }

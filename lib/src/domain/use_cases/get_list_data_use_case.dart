@@ -22,7 +22,7 @@ class GetListDataUseCase<T> extends UseCase<ApiResponseModel<List<T>>, QueryPara
       if(response.response.statusCode == HttpStatus.ok){
         final responseModel = ApiResponseModel<List<T>>.fromJson(
           response.data, 
-          (json) => (json as List<T>).map((e) => ModelType.getModel<T>(e as Object)).toList(),
+          (json) => (json as List<T>).map((e) => ModelType.getModel<T>(e as Object)!).toList(),
         );
         return DataState.success(responseModel);
       }else{
